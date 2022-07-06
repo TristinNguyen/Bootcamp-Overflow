@@ -22,6 +22,7 @@ SO that we can all assist each other with general understanding of full stack de
 * Handlebars
 * Javascript
 * Heroku
+* JawsDB
 
 ## Heroku URL for live appplication. 
 
