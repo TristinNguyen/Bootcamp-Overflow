@@ -13,12 +13,19 @@ Question.belongsTo(User, {
   foreignKey: 'user_id'
 });
 
+Vote.belongsTo(User, {
+  foreignKey: 'user_id'
+});
+
+Vote.belongsTo(Question, {
+  foreignKey: 'question_id'
+});
 User.hasMany(Vote, {
   foreignKey: 'user_id'
 });
 
-Post.hasMany(Vote, {
-  foreignKey: 'post_id'
+Question.hasMany(Vote, {
+  foreignKey: 'question_id'
 });
 
 // exports

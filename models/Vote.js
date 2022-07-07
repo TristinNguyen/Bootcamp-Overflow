@@ -22,7 +22,7 @@ Vote.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'post',
+        model: 'question',
         key: 'id'
       }
     }
