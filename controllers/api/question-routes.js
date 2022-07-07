@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
 // const { Question, User, Vote, Comment } = require('../../models');
-const { Question, User } = require('../../models');
+const { Question, User, Vote } = require('../../models');
 
 // get all questions
 router.get('/', (req, res) => {
@@ -12,8 +12,8 @@ router.get('/', (req, res) => {
         'id',
         'title',
         'question',
-        'created_at'
-        // [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE Question.id = vote.post_id)'), 'vote_count']
+        'created_at',
+        [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE Question.id = vote.post_id)'), 'vote_count']
       ]
     })
     .then(data => res.json(data))
@@ -62,15 +62,15 @@ router.post('/', (req, res) => {
     });
 });
 
-// router.put('/upvote', (req, res) => {
-//   // custom static method created in models/Question.js
-//   Question.upvote(req.body, { Vote })
-//     .then(updatedPostData => res.json(updatedPostData))
-//     .catch(err => {
-//       console.log(err);
-//       res.status(400).json(err);
-//     });
-// });
+router.put('/upvote', (req, res) => {
+  // custom static method created in models/Question.js
+  Question.upvote(req.body, { Vote })
+    .then(updatedPostData => res.json(updatedPostData))
+    .catch(err => {
+      console.log(err);
+      res.status(400).json(err);
+    });
+});
 
 // PUT - update question 
 router.put('/:id', (req, res) => {
