@@ -17,8 +17,10 @@ router.get('/', (req, res) => {
 
 // GET a single user: /api/users/1
 router.get('/:id', (req, res) => {
-
+// access User model & find read singular ID
+// read as SELECT * FROM users WHERE ID = i
   User.findOne({
+    // keep user password private
     attributes: { exclude: ['password'] },
     where: {
       id: req.params.id
