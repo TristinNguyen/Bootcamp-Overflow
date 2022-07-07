@@ -1,6 +1,6 @@
 const router = require('express').Router();
 // const { User, Post, Comment, Vote } = require('../../models');
-const { User } = require('../../models');
+const { User, Question } = require('../../models');
 
 
 // GET all users: /api/users
