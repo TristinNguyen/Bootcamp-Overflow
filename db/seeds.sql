@@ -6,7 +6,7 @@ VALUES
   (2, 'Joey Doaks', 'jd@aim.com', 'smokingfool'),
   (3, 'FunnyGuy', 'verry-funny@jokes.com', 'hahahaha'),
   (4, 'Humpty Dumpty', 'HD@aol.com', 'Oh-Whatta-Fall'),
-  (5, 'Cartwright', 'fuck@you.com', 'YourParentsAreInTheChilli'),
+  (5, 'Eric Cartman', 'fuck@you.com', 'YourParentsAreInTheChilli'),
   (6, 'Bart Simpson', 'You@suck.com', 'IHeartCartman');
 
 

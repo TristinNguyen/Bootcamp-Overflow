@@ -24,7 +24,7 @@ User.bulkCreate([
   password: 'Oh-Whatta-Fall'
   },
   {
-  username: 'Cartwright',
+  username: 'Eric Cartman',
   email: 'You@suck.com',
   password: 'IHeartCartman'
   },
