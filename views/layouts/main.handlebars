@@ -1,15 +1,49 @@
-<!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-TEST
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-</head>
-<body>
-    {{{body}}}
+<!DOCTYPE html>
+<html lang="en">
 
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bootcamp Overflow</title>
+    <link
+      rel="stylesheet"
+      href="/Bootcamp-Overflow/public/stylesheets/styles.css"
+    />
+    <!-- Latest compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>
+          <a href="/">Bootcamp Overflow, a place for Bootcamp Students. </a>
+        </h1>
+        <nav>
+          {{#if loggedIn}}
+            <button id="logout" class="logout-button">Logout</button>
+          {{else}}
+            <a href="/login">Login</a>
+          {{/if}}
+        </nav>
+      </header>
+      <main>
+        {{{body}}}
+      </main>
+      <footer>
+        Created by Tristin, Lacey, Rich, and Victor.
+      </footer>
+    </div>
+    {{#if loggedIn}}
+      <script src="/Bootcamp-Overflow/public/javascript/logout.js"></script>
+    {{/if}}
+    <!-- Latest compiled and minified JavaScript -->
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    ></script>
+  </body>
+
 </html>
