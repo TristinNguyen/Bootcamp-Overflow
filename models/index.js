@@ -1,11 +1,7 @@
-const router = require('express').Router();
+// import all models
+// const Post = require('./Post');
+const User = require('./User');
+// const Vote = require('./Vote');
+// const Comment = require('./Comment');
 
-const userRoutes = require('./user-routes.js');
-// const postRoutes = require('./post-routes');
-// const commentRoutes = require ('./comment-routes');
-
-router.use('/users', userRoutes);
-// router.use('/posts', postRoutes);
-// router.use('/comments', commentRoutes);
-
-module.exports = router;
+// create associations
