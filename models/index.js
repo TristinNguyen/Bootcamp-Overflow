@@ -5,3 +5,5 @@ const User = require('./User');
 // const Comment = require('./Comment');
 
 // create associations
+
+module.exports = { User };
