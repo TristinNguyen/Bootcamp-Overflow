@@ -13,6 +13,18 @@ Question.belongsTo(User, {
   foreignKey: 'user_id'
 });
 
+User.belongsToMany(Question, {
+  through: Vote,
+  as: 'voted_questions',
+  foreignKey: 'user_id'
+});
+
+Question.belongsToMany(User, {
+  through: Vote,
+  as: 'voted_questions',
+  foreignKey: 'question_id'
+});
+
 Vote.belongsTo(User, {
   foreignKey: 'user_id'
 });

@@ -13,10 +13,22 @@ router.get('/', (req, res) => {
         'title',
         'question',
         'created_at',
-        [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE Question.id = vote.post_id)'), 'vote_count']
+        [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE Question.id = vote.question_id)'), 'vote_count']
+      ],
+      include: [
+        {
+          model: User,
+          attributes: ['username']
+        }
       ]
     })
-    .then(data => res.json(data))
+    .then(data => {
+      if (!data) {
+        res.status(404).json({message: 'No Question found with this id'});
+        return;
+      }
+      res.json(data);
+    })
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -32,7 +44,9 @@ router.get('/:id', (req, res) => {
       'id',
       'title',
       'question',
-      'created_at'
+      'created_at',
+      [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE Question.id = vote.question_id)'), 'vote_count']
+
     ]
   })
     .then(data => {
@@ -62,10 +76,11 @@ router.post('/', (req, res) => {
     });
 });
 
+// PUT - upvote - api/questions/upvote
 router.put('/upvote', (req, res) => {
   // custom static method created in models/Question.js
   Question.upvote(req.body, { Vote })
-    .then(updatedPostData => res.json(updatedPostData))
+    .then(data => res.json(data))
     .catch(err => {
       console.log(err);
       res.status(400).json(err);
