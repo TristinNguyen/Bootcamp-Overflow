@@ -1,50 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bootcamp Overflow</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bootcamp Overflow</title>
 
-    <!-- Latest compiled and minified CSS -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    />   
-    <link
-      rel="stylesheet"
-      href="stylesheets/styles.css"
-    />
-  </head>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="stylesheets/styles.css" />
+</head>
 
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1>
-          <a href="/">Bootcamp Overflow, a place for Bootcamp Students. </a>
-        </h1>
-        <nav>
-          {{#if loggedIn}}
-            <button id="logout" class="logout-button">Logout</button>
-          {{else}}
-            <a href="/login">Login</a>
-          {{/if}}
-        </nav>
-      </header>
-      <main>
-        {{{body}}}
-      </main>
-      <footer>
-        Created by Tristin, Lacey, Rich, and Victor.
-      </footer>
-    </div>
-    {{#if loggedIn}}
-      <script src="/Bootcamp-Overflow/public/javascript/logout.js"></script>
-    {{/if}}
-    <!-- Latest compiled and minified JavaScript -->
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    ></script>
-  </body>
+<body>
+  <div class="wrapper">
+    <header>
+      <h1>
+        <a class="title" href="/">Bootcamp Overflow, a Place for Bootcamp Students. </a>
+      </h1>
+      <nav>
+        {{#if loggedIn}}
+        <button id="logout" class="logout-button">Logout</button>
+        {{else}}
+        <a href="/login">Login</a>
+        {{/if}}
+      </nav>
+    </header>
+    <main>
+      {{{body}}}
+    </main>
+    <footer>
+      Created by Tristin, Lacey, Rich, and Victor.
+    </footer>
+  </div>
+  {{#if loggedIn}}
+  <script src="/Bootcamp-Overflow/public/javascript/logout.js"></script>
+  {{/if}}
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"</script>
+</body>
 
 </html>
