@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
-// const { Question, User, Vote, Comment } = require('../../models');
-const { Question, User, Vote } = require('../../models');
+const { Question, User, Answer, Vote } = require('../../models');
 
 // get all questions
 router.get('/', (req, res) => {
@@ -13,16 +12,39 @@ router.get('/', (req, res) => {
         'title',
         'question',
         'created_at',
-        [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE Question.id = vote.post_id)'), 'vote_count']
+        [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE Question.id = vote.question_id)'), 'vote_count']
+      ],
+      include: [
+        // include the Anaswer model here:
+        {
+          model: Answer,
+          attributes: ['id', 'Answer_text', 'question_id', 'user_id', 'created_at'],
+          include: {
+            model: User,
+            attributes: ['username']
+          }
+        },
+        // Include the User model here
+        {
+          model: User,
+          attributes: ['username']
+        }
       ]
     })
-    .then(data => res.json(data))
+    .then(data => {
+      if (!data) {
+        res.status(404).json({message: 'No Question found with this id'});
+        return;
+      }
+      res.json(data);
+    })
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
     });
 });
 
+// GET  - single question - /:id
 router.get('/:id', (req, res) => {
   Question.findOne({
     where: {
@@ -32,7 +54,19 @@ router.get('/:id', (req, res) => {
       'id',
       'title',
       'question',
-      'created_at'
+      'created_at',
+      [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE Question.id = vote.question_id)'), 'vote_count']
+    ],
+    include: [
+      // include the Anaswer model here:
+      {
+        model: Answer,
+        attributes: ['id', 'Answer_text', 'question_id', 'user_id', 'created_at'],
+        include: {
+          model: User,
+          attributes: ['username']
+        }
+      }
     ]
   })
     .then(data => {
@@ -48,6 +82,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
+// POST -  create new question - /questions
 router.post('/', (req, res) => {
   // expects {title: 'Chilli', question: 'best recipe', user_id: 5}
   Question.create({
@@ -62,10 +97,11 @@ router.post('/', (req, res) => {
     });
 });
 
+// PUT - upvote - api/questions/upvote
 router.put('/upvote', (req, res) => {
   // custom static method created in models/Question.js
   Question.upvote(req.body, { Vote })
-    .then(updatedPostData => res.json(updatedPostData))
+    .then(data => res.json(data))
     .catch(err => {
       console.log(err);
       res.status(400).json(err);
