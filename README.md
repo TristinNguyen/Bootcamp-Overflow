@@ -25,6 +25,9 @@ SO that we can all assist each other with general understanding of full stack de
 * JawsDB
 
 ## Heroku URL for live appplication. 
+https://bootcampoverflow1.herokuapp.com/
 
+## GitHub Link
+https://github.com/TristinNguyen/Bootcamp-Overflow
 
 ## Screenshots
