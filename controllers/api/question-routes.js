@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
-// const { Question, User, Vote, Comment } = require('../../models');
-const { Question, User, Vote } = require('../../models');
+const { Question, User, Answer, Vote } = require('../../models');
 
 // get all questions
 router.get('/', (req, res) => {
@@ -16,6 +15,16 @@ router.get('/', (req, res) => {
         [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE Question.id = vote.question_id)'), 'vote_count']
       ],
       include: [
+        // include the Anaswer model here:
+        {
+          model: Answer,
+          attributes: ['id', 'Answer_text', 'question_id', 'user_id', 'created_at'],
+          include: {
+            model: User,
+            attributes: ['username']
+          }
+        },
+        // Include the User model here
         {
           model: User,
           attributes: ['username']
@@ -35,6 +44,7 @@ router.get('/', (req, res) => {
     });
 });
 
+// GET  - single question - /:id
 router.get('/:id', (req, res) => {
   Question.findOne({
     where: {
@@ -46,7 +56,17 @@ router.get('/:id', (req, res) => {
       'question',
       'created_at',
       [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE Question.id = vote.question_id)'), 'vote_count']
-
+    ],
+    include: [
+      // include the Anaswer model here:
+      {
+        model: Answer,
+        attributes: ['id', 'Answer_text', 'question_id', 'user_id', 'created_at'],
+        include: {
+          model: User,
+          attributes: ['username']
+        }
+      }
     ]
   })
     .then(data => {
@@ -62,6 +82,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
+// POST -  create new question - /questions
 router.post('/', (req, res) => {
   // expects {title: 'Chilli', question: 'best recipe', user_id: 5}
   Question.create({

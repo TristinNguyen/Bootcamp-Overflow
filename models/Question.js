@@ -7,7 +7,8 @@ class Question extends Model {
     return models.Vote.create({
       user_id: body.user_id,
       question_id: body.question_id
-    }).then(() => {
+    })
+    .then(() => {
       return Question.findOne({
         where: {
           id: body.question_id

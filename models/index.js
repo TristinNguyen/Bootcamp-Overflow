@@ -44,8 +44,8 @@ Answer.belongsTo(User, {
   foreignKey: 'user_id'
 });
 
-Answer.belongsTo(Post, {
-  foreignKey: 'post_id'
+Answer.belongsTo(Question, {
+  foreignKey: 'question_id'
 });
 
 User.hasMany(Answer, {
