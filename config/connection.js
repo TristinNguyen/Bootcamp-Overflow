@@ -6,6 +6,7 @@ require('dotenv').config();
 let sequelize;
 
 if (process.env.JAWSDB_URL){
+//insert rest of JAWSDB here//
 
 } else { 
 
