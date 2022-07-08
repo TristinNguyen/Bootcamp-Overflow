@@ -8,7 +8,7 @@ let sequelize;
 if (process.env.JAWSDB_URL){
 //insert rest of JAWSDB here//
   sequelize = new Sequelize(process.env.JAWSDB_URL);
-
+    
 } else { 
 
   // create connection to our db
