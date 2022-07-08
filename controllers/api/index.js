@@ -2,13 +2,12 @@ const router = require('express').Router();
 
 const userRoutes = require('./user-routes.js');
 const questionRoutes = require('./question-routes');
-
-//const commentRoutes = require ('./comment-routes');
+const answerRoutes = require ('./answer-routes');
 
 
 // add api prefixes
 router.use('/users', userRoutes);
 router.use('/questions', questionRoutes);
-// router.use('/comments', commentRoutes);
+router.use('/answers', answerRoutes);
 
 module.exports = router;

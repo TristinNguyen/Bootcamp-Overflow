@@ -21,17 +21,17 @@ class Question extends Model {
             sequelize.literal('(SELECT COUNT(*) FROM vote WHERE Question.id = vote.question_id)'),
             'vote_count'
           ]
+        ],
+        include: [
+          {
+            model: models.Answer,
+            attributes: ['id', 'answer_text', 'question_id', 'user_id', 'created_at'],
+            include: {
+              model: models.User,
+              attributes: ['username']
+            }
+          }
         ]
-        // include: [
-        //   {
-        //     model: models.Comment,
-        //     attributes: ['id', 'comment_text', 'question_id', 'user_id', 'created_at'],
-        //     include: {
-        //       model: models.User,
-        //       attributes: ['username']
-        //     }
-        //   }
-        // ]
       });
     });
   }
