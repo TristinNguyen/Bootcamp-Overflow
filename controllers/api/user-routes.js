@@ -59,7 +59,12 @@ router.post('/', (req, res) => {
     email: req.body.email,
     password: req.body.password
   })
-    .then(data => res.json(data))
+    .then(data => req.session.save (()=>{
+      req.session.user_id=data.id;
+      req.session.user_name=data.username;
+      req.session.logged_in=true;
+      res.json(data);
+    }))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -85,9 +90,25 @@ router.post('/login', (req, res) => {
       res.status(400).json({ message: 'Incorrect password!' });
       return;
     }
+req.session.save (()=>{
+  req.session.user_id=data.id;
+  req.session.user_name=data.username;
+  req.session.logged_in=true;
+  res.json({ user: data, message: 'You are now logged in!' });
+})
 
-    res.json({ user: data, message: 'You are now logged in!' });
   });
+});
+// allow user to log out if signed in
+router.post('/logout', (req, res) => {
+  if (req.session.loggedIn) {
+      req.session.destroy(() => {
+          res.status(204).end();
+      });
+  }
+  else {
+      res.status(404).end();
+  }
 });
 
 // PUT - updatea a user: /api/users/1
