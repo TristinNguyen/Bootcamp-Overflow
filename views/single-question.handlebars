@@ -1,0 +1,19 @@
+{{> post-info post}}
+
+{{#if loggedIn}}
+<form class="answer-form">
+    <div>
+        <textarea name="answer-body"></textarea>
+    </div>
+
+    <div>
+        <button type="submit">Add Comment</button>
+    </div>
+</form>
+{{/if}}
+
+{{> answer post.answer}}
+
+{{#if loggedIn}}
+<script src="/public/javascript/answer.js"></script>
+{{/if}}

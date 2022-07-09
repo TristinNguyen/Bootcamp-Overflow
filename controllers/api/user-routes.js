@@ -5,6 +5,7 @@ const { User, Question, Answer, Vote } = require('../../models');
 // GET all users: /api/users
 router.get('/', (req, res) => {
   User.findAll({
+    // keep password private when information is grabbed
     attributes: { exclude: ['password'] }
   })
     .then(data => res.json(data))
