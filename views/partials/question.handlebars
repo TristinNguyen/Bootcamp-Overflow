@@ -1,4 +1,4 @@
-<article class="post">
+<article class="question">
     <div class="title">
         <a href="{{question}}" target="_blank">{{title}}</a>
         <span>{{question}}</span>
@@ -7,5 +7,12 @@
         {{vote_count}} point(s) by {{user.name}} on
         {{created_at}}
         |
+        <a href="/question/{{id}}">{{comments.length}} comment(s)</a>
+    </div>
+        <div>
+        <button type="submit" id="up-vote-btn"></button>
+    </div>
+    <div>
+        <button type="submit" id="down-vote-btn"></button>
     </div>
 </article>

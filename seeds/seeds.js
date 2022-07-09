@@ -1,6 +1,6 @@
-const sequelize = require('../../config/connection');
+const sequelize = require('/Users/93pik/Desktop/projects/2-Project/Bootcamp-Overflow/config/connection');
 
-const { User, Question } = require('../../models');
+const { User, Question } = require('/Users/93pik/Desktop/projects/2-Project/Bootcamp-Overflow/models');
 
 User.bulkCreate([
   {
