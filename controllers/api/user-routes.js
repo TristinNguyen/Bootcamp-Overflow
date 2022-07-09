@@ -30,11 +30,16 @@ router.get('/:id', (req, res) => {
         attributes: [['id', 'question id'], 'title', 'question', 'created_at']
       },
       {
-        model: Question,
-        attributes: ['title'],
-        through: Vote,
-        as: 'voted_questions'
-      }
+        model: Answer,
+        attributes: [
+            'id',
+            'answer_text',
+        ],
+        include: {
+            model: Question,
+            attributes: ['title']
+        }
+        }
     ]
   })
     .then(data => {
