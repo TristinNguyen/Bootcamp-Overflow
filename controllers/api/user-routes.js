@@ -64,6 +64,7 @@ router.post('/', (req, res) => {
     email: req.body.email,
     password: req.body.password
   })
+<<<<<<< HEAD
     .then(data => req.session.save (()=>{
       req.session.user_id=data.id;
       req.session.user_name=data.username;
@@ -73,7 +74,17 @@ router.post('/', (req, res) => {
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
+=======
+  .then(dbUserData => {
+    req.session.save(() => {
+      req.session.user_id = dbUserData.id;
+      req.session.username = dbUserData.username;
+      req.session.loggedIn = true;
+  
+      res.json(dbUserData);
+>>>>>>> newfeature
     });
+  });
 });
 
 // POST - user login: /api/login
@@ -95,15 +106,24 @@ router.post('/login', (req, res) => {
       res.status(400).json({ message: 'Incorrect password!' });
       return;
     }
+<<<<<<< HEAD
 req.session.save (()=>{
   req.session.user_id=data.id;
   req.session.user_name=data.username;
   req.session.logged_in=true;
   res.json({ user: data, message: 'You are now logged in!' });
 })
+=======
+    req.session.save(() => {
+      // declare session variables
+      req.session.user_id = dbUserData.id;
+      req.session.username = dbUserData.username;
+      req.session.loggedIn = true;
+>>>>>>> newfeature
 
   });
 });
+<<<<<<< HEAD
 // allow user to log out if signed in
 router.post('/logout', (req, res) => {
   if (req.session.loggedIn) {
@@ -114,6 +134,8 @@ router.post('/logout', (req, res) => {
   else {
       res.status(404).end();
   }
+=======
+>>>>>>> newfeature
 });
 
 // PUT - updatea a user: /api/users/1
