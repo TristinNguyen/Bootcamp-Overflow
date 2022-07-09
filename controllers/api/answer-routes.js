@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const withAuth = require('../../utils/auth');
 const { Answer } = require('../../models');
 
 router.get('/', (req, res) => {
@@ -9,8 +10,8 @@ router.get('/', (req, res) => {
       res.status(500).json(err);
     });
 });
-
-router.post( '/', (req, res) => {
+// post a new comment to a post
+router.post( '/', withAuth, (req, res) => {
   Answer.create({
     answer_text: req.body.answer_text,
     user_id: req.body.user_id,
@@ -23,7 +24,8 @@ router.post( '/', (req, res) => {
   })
 });
 
-router.delete('/:id', (req, res) => {
+// delete a comment but you must be igned in
+router.delete('/:id', withAuth, (req, res) => {
   Answer.destroy({
     where: {
       id: req.params.id

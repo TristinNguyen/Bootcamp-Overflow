@@ -1,12 +1,35 @@
-{{!-- <article class="post">
-    <div class="title">
-        <a href="{{post_url}}" target="_blank">{{title}}</a>
-        <span>{{post_url}}</span>
-    </div>
-    <div class="meta">
-        {{vote_count}} point(s) by {{user.name}} on
-        {{created_at}}
-        |
-        <a href="/post/{{id}}">{{comments.length}} comment(s)</a>
-    </div>
-</article> --}}
+
+<article class="login-options">
+<form class="login-form">
+  <div class="login">
+    <h4 class="">Sign In</h4>
+    <label for="email-login">Email</label>
+    <input type="text" class="email-login" id="email-login" required/>
+
+
+    <label for="password-login">Password</label>
+    <input type="password" class="password-login" id="password-login">
+    <button type="submit" class="login-form-button">Sign In</button>
+  </div>
+</form>
+
+
+
+<form class="signup-form">
+  <div class="signup">
+    <h4 class="">Sign Up!</h4>
+
+     <label for="username-signup">Username</label>
+    <input type="text" class="username-signup" id="username-signup">
+
+     <label for="password-login">Email</label>
+    <input type="email" class="email-signup" id="email-signup">
+
+    <label for="password-signup">Password</label>
+    <input type="password" class="password-signup" id="password-signup">
+
+    <button type="submit" class="signup-form-button">Sign Up!</button>
+  </div>
+</form>
+</article>
+<script src="/public/javascript/login.js"></script>
