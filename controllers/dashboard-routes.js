@@ -11,7 +11,7 @@ router.get('/', withAuth, (req, res) => {
     question.findAll({
       attributes: [
         'id',
-        'question',
+        'question_content',
         'title',
         'created_at',
         [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE question.id = vote.question_id)'), 'vote_count']
@@ -31,9 +31,9 @@ router.get('/', withAuth, (req, res) => {
         }
       ]
     })
-    .then(dbquestionData => {
+    .then(dbQuestionData => {
     // serialize data before passing to template
-    const questions = dbquestionData.map(question => question.get({ plain: true }));
+    const questions = dbQuestionData.map(question => question.get({ plain: true }));
     console.log(questions)
     res.render('dashboard', { questions, loggedIn: true });
     })
@@ -67,9 +67,9 @@ router.get('/edit/:id', withAuth, (req, res) => {
         }
       ]
     })
-      .then(dbquestionData => {
-        if (dbquestionData) {
-          const question = dbquestionData.get({ plain: true });
+      .then(dbQuestionData => {
+        if (dbQuestionData) {
+          const question = dbQuestionData.get({ plain: true });
           
           res.render('edit-question', {
             question,
