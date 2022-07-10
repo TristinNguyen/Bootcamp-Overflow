@@ -1,10 +1,17 @@
 body {
-
     background-color: wheat;
 }
 
 .title {
-    color: purple;
+    color: rgb(6, 100, 143);
+    text-align: center;
+    display: flex;
+    width: 50%;
+    height: 200px;
+    margin: auto;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
 }
 
 
@@ -27,12 +34,27 @@ a {
     background-color: grey;
     display: inline-block;
     width: 45%;
+    margin: 25px;
+    justify-content: center;
+    align-items: center;
   }
   .signup-form {
-    padding: 1rem 1.5em;
+    margin: auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 10px;
+  }
+    /* padding: 1rem 1.5em;
     display: inline-block;
     border-radius: .5rem;
     background-color: grey;
     width: 45%;
     color: black;
+  } */
+
+  .bottomLabel {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    font-size:x-large;
   }
