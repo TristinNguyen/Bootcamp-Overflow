@@ -1,59 +1,79 @@
-// import all models
-const Question = require('./Question');
 const User = require('./User');
-const Vote = require('./Vote');
-const Answer = require('./Answer');
+const question = require('./question');
+const Vote = require('./Vote'); 
+const answer = require('./answer');
 
-// create associations
-User.hasMany(Question, {
-  foreignKey: 'user_id'
+// create associations 
+// linking the user id to the question - one user can have many questions: hasMany
+User.hasMany(question, {
+    foreignKey: 'user_id'
 });
 
-Question.belongsTo(User, {
-  foreignKey: 'user_id'
+// linking the question to the user id - the question can belong to one user, not many: belongsTo
+question.belongsTo(User, {
+    foreignKey: 'user_id',
+    onDelete: 'SET NULL'
 });
 
-User.belongsToMany(Question, {
-  through: Vote,
-  as: 'voted_questions',
-  foreignKey: 'user_id'
+// linking the user to many questions - viewing their voted on questions 
+User.belongsToMany(question, {
+    through: Vote,
+    as: 'voted_questions',
+    foreignKey: 'user_id',
+    onDelete: 'CASCADE'
 });
 
-Question.belongsToMany(User, {
-  through: Vote,
-  as: 'voted_questions',
-  foreignKey: 'question_id'
+// linking the question to the liked users - viewing how many likes on a question 
+question.belongsToMany(User, {
+    through: Vote,
+    as: 'voted_questions',
+    foreignKey: 'question_id',
+    onDelete: 'CASCADE'
 });
 
+// votes of the user 
 Vote.belongsTo(User, {
-  foreignKey: 'user_id'
+    foreignKey: 'user_id',
+    onDelete: 'CASCADE'
 });
 
-Vote.belongsTo(Question, {
-  foreignKey: 'question_id'
+// vote on the question 
+Vote.belongsTo(question, {
+    foreignKey: 'question_id',
+    onDelete: 'SET NULL'
 });
+
+// users votes
 User.hasMany(Vote, {
-  foreignKey: 'user_id'
+    foreignKey: 'user_id'
 });
 
-Question.hasMany(Vote, {
-  foreignKey: 'question_id'
+// questions votes
+question.hasMany(Vote, {
+    foreignKey: 'question_id',
 });
 
-Answer.belongsTo(User, {
-  foreignKey: 'user_id'
+// each questioned answer belongs to a particular user (ref user id)
+answer.belongsTo(User, {
+    foreignKey: 'user_id',
+    onDelete: 'CASCADE'
 });
 
-Answer.belongsTo(Question, {
-  foreignKey: 'question_id'
+// each answer belongs to a particular question (ref question id)
+answer.belongsTo(question, {
+    foreignKey: 'question_id',
+    onDelete: 'CASCADE'
 });
 
-User.hasMany(Answer, {
-  foreignKey: 'user_id'
+// a user can add many answers (ref user id)
+User.hasMany(answer, {
+    foreignKey: 'user_id',
+    onDelete: 'CASCADE'
 });
 
-Question.hasMany(Answer, {
-  foreignKey: 'question_id'
+// a single question can have many answers (ref question id)
+question.hasMany(answer, {
+    foreignKey: 'question_id'
 });
-// exports
-module.exports = { User, Question, Vote, Answer };
+
+module.exports = { User, question, Vote, answer};

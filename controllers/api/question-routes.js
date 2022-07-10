@@ -1,156 +1,126 @@
 const router = require('express').Router();
+const {Op } = require ("sequelize")
 const sequelize = require('../../config/connection');
-const { Question, User, Answer, Vote } = require('../../models');
+const withAuth = require('../../utils/auth');
+const { question, User, Vote, answer } = require('../../models');
 
 // get all questions
 router.get('/', (req, res) => {
-  console.log('======================');
-    Question.findAll({
-      order: [['created_at', 'DESC']],
-      attributes: [
+    console.log('========================');
+    console.log('req.query', req.query);
+    question.findAll({
+        order: [['created_at', 'DESC']],
+        //query config
+        attributes: [
         'id',
+        'question_content',
         'title',
-        'question',
         'created_at',
-        [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE Question.id = vote.question_id)'), 'vote_count']
-      ],
-      include: [
-        // include the Anaswer model here:
-        {
-          model: Answer,
-          attributes: ['id', 'Answer_text', 'question_id', 'user_id', 'created_at'],
-          include: {
-            model: User,
-            attributes: ['username']
-          }
-        },
-        // Include the User model here
-        {
-          model: User,
-          attributes: ['username']
-        }
-      ]
+        [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE question.id = vote.question_id)'), 'vote_count']
+        ],
+        include: [
+            {
+                model: answer,
+                attributes: [
+                'id',
+                'answer_text',
+                'question_id',
+                'user_id',
+                'created_at'
+                ],
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
+            },
+            {
+                model: User,
+                attributes: ['username']
+            },
+        ]
     })
-    .then(data => {
-      if (!data) {
-        res.status(404).json({message: 'No Question found with this id'});
-        return;
-      }
-      res.json(data);
-    })
+    .then(dbQuestionData => res.json(dbQuestionData))
     .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
+        console.log(err);
+        res.status(500).json(err);
     });
 });
 
-// GET  - single question - /:id
+// get single question
 router.get('/:id', (req, res) => {
-  Question.findOne({
-    where: {
-      id: req.params.id
-    },
-    attributes: [
-      'id',
-      'title',
-      'question',
-      'created_at',
-      [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE Question.id = vote.question_id)'), 'vote_count']
-    ],
-    include: [
-      // include the Anaswer model here:
-      {
-        model: Answer,
-        attributes: ['id', 'Answer_text', 'question_id', 'user_id', 'created_at'],
-        include: {
-          model: User,
-          attributes: ['username']
+    console.log(req);
+    question.findOne({
+        where: {
+            id: req.params.id
+        },
+        attributes: [
+            'id',
+            'question_content',
+            'title',
+            'created_at',
+            [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE question.id = vote.question_id)'), 'vote_count']
+        ],
+        include: [
+            {
+                model: answer,
+                attributes: [
+                'id',
+                'answer_text',
+                'question_id',
+                'user_id',
+                'created_at'
+                ],
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
+            },
+            {
+                model: User,
+                attributes: ['username']
+            },
+        ]
+    })
+    .then(dbQuestionData => {
+        if (!dbQuestionData) {
+            res.status(404).json({ message: 'No question found with this id' });
+            return;
         }
-      }
-    ]
-  })
-    .then(data => {
-      if (!data) {
-        res.status(404).json({ message: 'No post found with this id' });
-        return;
-      }
-      res.json(data);
+        res.json(dbQuestionData);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
+
+// create a question
+router.post('/', withAuth, (req, res) => {
+    question.create({
+        title: req.body.title,
+        post: req.body.post,
+        user_id: req.session.user_id
     })
+    .then(dbQuestionData => res.json(dbQuestionData))
     .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
+        console.log(err);
+        res.status(500).json(err);
     });
 });
 
-// POST -  create new question - /questions
-router.post('/', (req, res) => {
-  // expects {title: 'Chilli', question: 'best recipe', user_id: 5}
-  Question.create({
-    title: req.body.title,
-    question: req.body.question,
-    user_id: req.body.user_id
-  })
-    .then(data => res.json(data))
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
-
-// PUT - upvote - api/questions/upvote
-router.put('/upvote', (req, res) => {
-  // custom static method created in models/Question.js
-  Question.upvote(req.body, { Vote })
-    .then(data => res.json(data))
-    .catch(err => {
-      console.log(err);
-      res.status(400).json(err);
-    });
-});
-
-// PUT - update question 
-router.put('/:id', (req, res) => {
-  Question.update(
-    {
-      title: req.body.title
-    },
-    {
-      where: {
-        id: req.params.id
-      }
+// upvote (votes technically alter the question's data)
+router.put('/vote', withAuth, (req, res) => {
+    // make sure the session exists first
+    // upvotes should only work if someone is logged in
+    if (req.session) {
+      // pass session id along with all destructured properties on req.body
+        question.vote({ ...req.body, user_id: req.session.user_id }, { Vote, answer, User })
+        .then(updatedVoteData => res.json(updatedVoteData))
+        .catch(err => {
+            console.log(err);
+            res.status(400).json(err);
+        });
     }
-  )
-    .then(data => {
-      if (!data) {
-        res.status(404).json({ message: 'No post found with this id' });
-        return;
-      }
-      res.json(data);
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
-
-// DELETE question
-router.delete('/:id', (req, res) => {
-  Question.destroy({
-    where: {
-      id: req.params.id
-    }
-  })
-    .then(data => {
-      if (!data) {
-        res.status(404).json({ message: 'No post found with this id' });
-        return;
-      }
-      res.json(data);
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
 });
 
 module.exports = router;
