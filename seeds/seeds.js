@@ -1,11 +1,11 @@
-const sequelize = require('../../config/connection');
+const sequelize = require('/Users/93pik/Desktop/projects/2-Project/Bootcamp-Overflow/config/connection');
 
-const { User, Question } = require('../../models');
+const { User, question } = require('/Users/93pik/Desktop/projects/2-Project/Bootcamp-Overflow/models');
 
 User.bulkCreate([
   {
   username: 'Joe Doaks',
-  email: 'jdoaks@gamil.com',
+  email: 'jdoaks@gmail.com',
   password: 'smokingfool'
   },
   {
@@ -39,20 +39,20 @@ User.bulkCreate([
   });
 
 
-  Question.bulkCreate([
+  question.bulkCreate([
     {
     title: 'Why Me?',
-    question: 'What is the meaning of life?',
+    question_content: 'What is the meaning of life?',
     user_id: 1
     },
     {
     title: 'Chilli',
-    question: 'What is the best way to cook someones parents?',
+    question_content: 'What is the best way to cook someones parents?',
     user_id: 5
     },
     {
     title: 'what time is it?',
-    question: 'Now is the time for all good men to come to the aid of their country',
+    question_content: 'Now is the time for all good men to come to the aid of their country',
     user_id: 2
     }
   ])

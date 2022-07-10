@@ -1,0 +1,17 @@
+<div class="maindashboard">
+    <article class="newquestionbtn">{{> newquestion}}</article>
+    <article class="search">
+        <input id="search-input" type="text" placeholder="Please Search for Keywords">
+        <button class="search-button" id="search-button">Search</button>
+    </article>
+</div>
+<br><br>
+<h1 class="title">User questions</h1>
+
+<ol id="questions-container" class="questions">
+    {{#each questions as |question|}}
+    <li class="questionwidth">
+        {{> questions question}}
+    </li>
+    {{/each}}
+</ol>

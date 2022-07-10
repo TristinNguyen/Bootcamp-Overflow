@@ -3,7 +3,7 @@ const sequelize = require('../config/connection');
 
 // create our Question model
 class Question extends Model {
-  static upvote(body, models) {
+  static vote(body, models) {
     return models.Vote.create({
       user_id: body.user_id,
       question_id: body.question_id
@@ -16,11 +16,13 @@ class Question extends Model {
         attributes: [
           'id',
           'title',
-          'question',
+          'question_content',
           'created_at',
           [
-            sequelize.literal('(SELECT COUNT(*) FROM vote WHERE Question.id = vote.question_id)'),
-            'vote_count'
+            sequelize.literal('(SELECT COUNT(*) FROM vote WHERE question.id = vote.question_id & vote.up_vote = true)'), 'upvote_count'
+          ],
+          [
+              sequelize.literal('(SELECT COUNT(*) FROM vote WHERE question.id = vote.question_id & vote.down_vote = true)'), 'downvote_count'
           ]
         ],
         include: [
@@ -38,7 +40,7 @@ class Question extends Model {
   }
 }
 
-// create fields/columns for Post model
+// create fields/columns for question model
 Question.init(
   {
     id: {
@@ -51,7 +53,7 @@ Question.init(
       type: DataTypes.STRING(100),
       allowNull: false
     },
-    question: {
+    question_content: {
       type: DataTypes.TEXT,
       allowNull: false
     },
