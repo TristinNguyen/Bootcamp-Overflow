@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
         [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE Question.id = vote.question_id)'), 'vote_count']
       ],
       include: [
-        // include the Anaswer model here:
+        // include the Answer model here:
         {
           model: Answer,
           attributes: ['id', 'Answer_text', 'question_id', 'user_id', 'created_at'],
