@@ -16,7 +16,7 @@ class Question extends Model {
         attributes: [
           'id',
           'title',
-          'question',
+          'question_content',
           'created_at',
           [
             sequelize.literal('(SELECT COUNT(*) FROM vote WHERE question.id = vote.question_id & vote.up_vote = true)'), 'upvote_count'
@@ -53,7 +53,7 @@ Question.init(
       type: DataTypes.STRING(100),
       allowNull: false
     },
-    question: {
+    question_content: {
       type: DataTypes.TEXT,
       allowNull: false
     },
