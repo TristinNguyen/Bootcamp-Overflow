@@ -1,7 +1,36 @@
 body {
-    background-color: orange;
-};
+    background-color: wheat;
+}
 
 .title {
-    color: aqua;
-};
+    color: purple;
+}
+
+a {
+    text-decoration: none;
+    color: purple;
+    font-weight: bold;
+    transition: color .1s;
+  }
+
+  a:hover {
+    color: #3486eb;
+  }
+  form label {
+    display: block;
+  }
+  .login-form {
+    padding: 1rem 1.5em;
+    border-radius: .5rem;
+    background-color: grey;
+    display: inline-block;
+    width: 45%;
+  }
+  .signup-form {
+    padding: 1rem 1.5em;
+    display: inline-block;
+    border-radius: .5rem;
+    background-color: grey;
+    width: 45%;
+    color: black;
+  }
