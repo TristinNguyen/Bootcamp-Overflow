@@ -1,50 +1,60 @@
 body {
-    background-color: wheat;
+  background-color: wheat;
 }
 
 .title {
-    color: rgb(6, 100, 143);
-    text-align: center;
-    display: flex;
-    width: 50%;
-    height: 200px;
-    margin: auto;
-    border-radius: 10px;
-    align-items: center;
-    justify-content: center;
+  color: rgb(6, 100, 143);
+  text-align: center;
+  display: flex;
+  width: 50%;
+  height: 200px;
+  margin: auto;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: center;
 }
 
-
 a {
-    text-decoration: none;
-    color: purple;
-    font-weight: bold;
-    transition: color .1s;
-  }
+  text-decoration: none;
+  color: purple;
+  font-weight: bold;
+  transition: color .1s;
+}
 
-  a:hover {
-    color: #3486eb;
-  }
-  form label {
-    display: block;
-  }
-  .login-form {
-    padding: 1rem 1.5em;
-    border-radius: .5rem;
-    background-color: grey;
-    display: inline-block;
-    width: 45%;
-    margin: 25px;
-    justify-content: center;
-    align-items: center;
-  }
-  .signup-form {
-    margin: auto;
-    width: 50%;
-    border: 3px solid green;
-    padding: 10px;
-  }
-    /* padding: 1rem 1.5em;
+a:hover {
+  color: #3486eb;
+}
+
+form label {
+  display: block;
+}
+
+.login-form {
+  /* padding: 1rem 1.5em;
+  border-radius: .5rem;
+  background-color: grey;
+  display: inline-block;
+  width: 45%;
+  margin: 25px;
+  justify-content: center;
+  align-items: center;
+} */  margin: auto;
+  width: 50%;
+  border: 3px solid rgba(61, 65, 61, 0.116);
+  padding: 10px;
+  margin-bottom: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup-form {
+  width: 50%;
+  border: 3px solid rgba(61, 65, 61, 0.116);
+  padding: 10px;
+  margin: auto;
+}
+
+/* padding: 1rem 1.5em;
     display: inline-block;
     border-radius: .5rem;
     background-color: grey;
@@ -52,9 +62,9 @@ a {
     color: black;
   } */
 
-  .bottomLabel {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    font-size:x-large;
-  }
+.bottomLabel {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-size: x-large;
+}
