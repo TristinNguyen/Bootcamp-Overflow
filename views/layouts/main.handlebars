@@ -12,12 +12,12 @@
 </head>
 
 <body>
-  <div class="wrapper">
+  <div class="container-fluid">
     <header>
       <h1>
-        <a href="/">Bootcamp Overflow, a Place for Bootcamp Students. </a>
+        <a class="title" href="/">Bootcamp Overflow, a Place for Bootcamp Students </a>
       </h1>
-      <nav>
+      <nav class="flexboxLogin">
         {{#if loggedIn}}
         <a href="/dashboard"></a>
         <button id="logout" class="logout-button">Logout</button>
@@ -27,7 +27,7 @@
     <main>
       {{{body}}}
     </main>
-    <footer>
+    <footer class="bottomLabel">
       Created by Tristin, Lacey, Rich, and Victor.
     </footer>
   </div>
