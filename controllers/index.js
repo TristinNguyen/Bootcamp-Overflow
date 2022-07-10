@@ -2,6 +2,7 @@
 const router = require('express').Router();
 const homeRoutes = require('./home-routes.js');
 const dashboardRoutes = require('./dashboard-routes.js');
+const { append } = require('express/lib/response');
 
 
 const apiRoutes = require('./api');
