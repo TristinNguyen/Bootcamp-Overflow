@@ -31,12 +31,12 @@ router.get('/', (req, res) => {
         }
       ]
     })
-    .then(data => {
-      if (!data) {
+    .then(dbQuestionData => {
+      if (!dbQuestionData) {
         res.status(404).json({message: 'No Question found with this id'});
         return;
       }
-      res.json(data);
+      res.json(dbQuestionData);
     })
     .catch(err => {
       console.log(err);
@@ -69,12 +69,12 @@ router.get('/:id', (req, res) => {
       }
     ]
   })
-    .then(data => {
-      if (!data) {
+    .then(dbQuestionData => {
+      if (!dbQuestionData) {
         res.status(404).json({ message: 'No post found with this id' });
         return;
       }
-      res.json(data);
+      res.json(dbQuestionData);
     })
     .catch(err => {
       console.log(err);
@@ -90,7 +90,7 @@ router.post('/', (req, res) => {
     question: req.body.question,
     user_id: req.body.user_id
   })
-    .then(data => res.json(data))
+    .then(dbQuestionData => res.json(dbQuestionData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -101,7 +101,7 @@ router.post('/', (req, res) => {
 router.put('/upvote', (req, res) => {
   // custom static method created in models/Question.js
   Question.upvote(req.body, { Vote })
-    .then(data => res.json(data))
+    .then(dbQuestionData => res.json(dbQuestionData))
     .catch(err => {
       console.log(err);
       res.status(400).json(err);
@@ -120,12 +120,12 @@ router.put('/:id', (req, res) => {
       }
     }
   )
-    .then(data => {
-      if (!data) {
+    .then(dbQuestionData => {
+      if (!dbQuestionData) {
         res.status(404).json({ message: 'No post found with this id' });
         return;
       }
-      res.json(data);
+      res.json(dbQuestionData);
     })
     .catch(err => {
       console.log(err);
@@ -140,12 +140,12 @@ router.delete('/:id', (req, res) => {
       id: req.params.id
     }
   })
-    .then(data => {
-      if (!data) {
+    .then(dbQuestionData => {
+      if (!dbQuestionData) {
         res.status(404).json({ message: 'No post found with this id' });
         return;
       }
-      res.json(data);
+      res.json(dbQuestionData);
     })
     .catch(err => {
       console.log(err);

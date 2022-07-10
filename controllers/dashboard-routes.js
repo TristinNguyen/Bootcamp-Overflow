@@ -2,11 +2,11 @@ const router = require("express").Router();
 const sequelize = require("../config/connection");
 // this requires user to be logged in
 const withAuth = require("../utils/auth");
-const { Post, User, Comment } = require("../models");
+const { Question, User, Answer } = require("../models");
 
 //this GETS dashboard page
 router.get("/", withAuth, (req, res) => {
-  Post.findAll({
+  Question.findAll({
     where: {
       // now only show posts on user dashboard that have been created by the user
       // and use the ID from the session
@@ -26,7 +26,7 @@ router.get("/", withAuth, (req, res) => {
     ],
     include: [
       {
-        model: Comment,
+        model: Answer,
         attributes: ["id", "answer_text", "question", "user_id", "created_at"],
         include: {
           model: User,
@@ -39,10 +39,10 @@ router.get("/", withAuth, (req, res) => {
       },
     ],
   })
-    .then((data) => {
+    .then((dbQuestionData) => {
       // serialize data before passing to template
-      const posts = data.map((post) => post.get({ plain: true }));
-      res.render("dashboard", { posts, loggedIn: true });
+      const posts = dbQuestionData.map((question) => question.get({ plain: true }));
+      res.render("dashboard", { questions, loggedIn: true });
     })
     .catch((err) => {
       console.log(err);
@@ -66,7 +66,7 @@ router.get("/edit/:id", withAuth, (req, res) => {
     ],
     include: [
       {
-        model: Comment,
+        model: Answer,
         attributes: ["id", "answer_text", "question", "user_id", "created_at"],
         include: {
           model: User,
@@ -79,9 +79,9 @@ router.get("/edit/:id", withAuth, (req, res) => {
       },
     ],
   })
-    .then((data) => {
-      if (data) {
-        const post = data.get({ plain: true });
+    .then((dbQuestionData) => {
+      if (dbQuestionData) {
+        const post = dbQuestionData.get({ plain: true });
 
         res.render("edit-question", {
           post,

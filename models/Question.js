@@ -19,10 +19,10 @@ class Question extends Model {
           'question',
           'created_at',
           [
-            sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id & vote.up_vote = true)'), 'upvote_count'
+            sequelize.literal('(SELECT COUNT(*) FROM vote WHERE question.id = vote.question_id & vote.up_vote = true)'), 'upvote_count'
           ],
           [
-              sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id & vote.down_vote = true)'), 'downvote_count'
+              sequelize.literal('(SELECT COUNT(*) FROM vote WHERE question.id = vote.question_id & vote.down_vote = true)'), 'downvote_count'
           ]
         ],
         include: [
@@ -40,7 +40,7 @@ class Question extends Model {
   }
 }
 
-// create fields/columns for Post model
+// create fields/columns for question model
 Question.init(
   {
     id: {
