@@ -1,0 +1,30 @@
+<!--opens Modal-->
+<div class="main">
+  <div class="sub-main">
+    <button class="button-two newquestion" id="newquestion"><span>New question!</span></button>
+  </div>
+</div>
+
+    <!-- The Modal -->
+    <div id="newquestion-popout" class="newquestion-popout">
+
+      <!-- Modal content -->
+      <div class="newquestion-content">
+        <button class="close">Cancel</button>
+        <section>
+          <h2>Create New question</h2>
+          <form class="new-question-form">
+            <div>
+              <label for="question-title">Title</label>
+              <input type="text" id="question-title" name="question-title" />
+            </div>
+            <div>
+              <label for="question-content">Content</label>
+              <input type="text" id="question-content" name="question-content" />
+            </div>
+            <button type="submit" class="createbtn">Create</button>
+          </form>
+        </section>
+      </div>
+    </div>
+    <script src="/javascript/add-question.js"></script>
