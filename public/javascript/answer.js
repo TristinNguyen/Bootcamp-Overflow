@@ -1,16 +1,16 @@
-async function commentFormHandler(event) {
+async function answerFormHandler(event) {
     event.preventDefault();
 
-    const comment_text = document.querySelector('textarea[name="answer-body"]').value.trim();
+    const answer_text = document.querySelector('textarea[name="answer-body"]').value.trim();
 
-    const post_id = window.location.toString().split('/')[window.location.toString().split('/').length - 1];
+    const question_id = window.location.toString().split('/')[window.location.toString().split('/').length - 1];
 
-    if(comment_text) {
+    if(answer_text) {
         const response = await fetch('/api/answers', {
             method: 'POST',
             body: JSON.stringify({
-                comment_text,
-                post_id
+                answer_text,
+                question_id
             }),
             headers: {
                 'Content-Type': 'application/json'
@@ -26,4 +26,4 @@ async function commentFormHandler(event) {
     }
 }
 
-document.querySelector('.answer-form').addEventListener('submit', commentFormHandler);
+document.querySelector('.answer-form').addEventListener('submit', answerFormHandler);

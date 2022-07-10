@@ -1,18 +1,24 @@
-<article class="question">
-    <div class="title">
-        <a href="{{question}}" target="_blank">{{title}}</a>
-        <span>{{question}}</span>
+<div class="question-container">
+
+  <div class="question-header">
+    <div class="question-author--no-cover">
+      <h4>{{user.username}}</h4>
     </div>
-    <div class="meta">
-        {{vote_count}} point(s) by {{user.name}} on
-        {{created_at}}
-        |
-        <a href="/question/{{id}}">{{answers.length}} answer(s)</a>
+  </div>
+
+  <div class="question-body">
+    <div class="question-title">
+      <h2><a href="/question/{{id}}">{{title}}</a></h2>
     </div>
-        <div>
-        <button type="submit" id="up-vote-btn"></button>
-    </div>
-    <div>
-        <button type="submit" id="down-vote-btn"></button>
-    </div>
-</article>
+    <div class="blog-summary">
+      <p>{{question_content}}</p>
+  </div>
+  <div class="question-footer">
+    <ul>
+      <li class="published-date">{{created_at}}</li>
+      </div>
+    </ul>
+  </div>
+</div>
+
+<script src="/public/javascript/vote.js"></script>

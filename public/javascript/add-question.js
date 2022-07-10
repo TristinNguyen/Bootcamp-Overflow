@@ -17,7 +17,7 @@ async function newQuestionHandler(event) {
    const question_content = document.querySelector('input[name="question"]').value;
 
     const response = await fetch('/api/questions', {
-        method: 'question',
+        method: 'POST',
         body: JSON.stringify({
             title,
             question_content,

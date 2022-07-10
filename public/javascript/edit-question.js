@@ -21,4 +21,4 @@ async function editFormHandler(event) {
     }
 }
 
-document.querySelector('.edit-question-form').addEventListener('submit', editFormHandler); 
+document.querySelector('.edit-question-form').addEventListener('submit', editFormHandler);
