@@ -2,11 +2,11 @@ const router = require("express").Router();
 const res = require("express/lib/response");
 const sequelize = require("../config/connection");
 const withAuth = require('../utils/auth');
-const { Question, User, Answer} = require("../models");
+const { question, User, answer} = require("../models");
 
 router.get("/", (req, res) => {
   console.log(req.session);
-  Question.findAll({
+  question.findAll({
     attributes: [
       "id",
       "question_content",
@@ -21,7 +21,7 @@ router.get("/", (req, res) => {
     ],
     include: [
       {
-        model: Answer,
+        model: answer,
         attributes: ["id", "answer_text", "question_id", "user_id", "created_at"],
         include: {
           model: User,
@@ -36,7 +36,7 @@ router.get("/", (req, res) => {
   })
     .then((dbQuestionData) => {
       // pass a single question object into the homepage template
-      const questions = dbQuestionData.map((Question) => question.get({ plain: true }));
+      const questions = dbQuestionData.map((question) => question.get({ plain: true }));
       res.render("homepage", { questions });
     })
     .catch((err) => {
@@ -48,7 +48,7 @@ router.get("/", (req, res) => {
 router.get("/question/:id", withAuth, (req, res) => {
   const id2 = req.params.id
 
-  Question.findOne({
+  question.findOne({
     where: {
       id: id2
     },
@@ -56,7 +56,6 @@ router.get("/question/:id", withAuth, (req, res) => {
       'id',
       'question_content',
       'title',
-      'category_id',
       'created_at',
       [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE question.id = vote.question_id)'), 'vote_count']
     ],

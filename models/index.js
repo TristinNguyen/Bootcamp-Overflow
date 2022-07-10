@@ -1,7 +1,7 @@
 const User = require('./User');
 const question = require('./question');
 const Vote = require('./Vote'); 
-const answer = require('./Answer');
+const answer = require('./answer');
 
 // create associations 
 // linking the user id to the question - one user can have many questions: hasMany
@@ -75,6 +75,5 @@ User.hasMany(answer, {
 question.hasMany(answer, {
     foreignKey: 'question_id'
 });
-
 
 module.exports = { User, question, Vote, answer};
