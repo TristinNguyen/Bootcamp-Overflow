@@ -6,6 +6,7 @@ const { append } = require('express/lib/response');
 
 
 const apiRoutes = require('./api');
+
 //add API prefixes
 router.use('/api', apiRoutes);
 router.use('/', homeRoutes);

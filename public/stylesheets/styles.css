@@ -1,185 +1,111 @@
 body {
-    background-color: white;
-};
+  background-color: wheat;
+}
 
 .title {
-    color: purple;
-};
+  color: rgb(6, 100, 143);
+  text-align: center;
+  display: flex;
+  width: 50%;
+  height: 200px;
+  margin: auto;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
 a {
-    text-decoration: none;
-    color: purple;
-    font-weight: bold;
-    transition: color .1s;
-  }
-  a:hover {
-    color: #3486eb;
-  }
-  form label {
-    display: block;
-  }
-  .login-form {
-    padding: 1rem 1.5em;
-    border-radius: .5rem;
-    background-color: grey;
-    display: inline-block;
-    width: 45%;
-  }
-  .signup-form {
-    padding: 1rem 1.5em;
-    display: inline-block; 
-    border-radius: .5rem;
-    background-color: grey;
-    width: 45%;
-    color: black;
-  }
-  /*Login Form*/
-#login-form {
-  padding: 10px 15px;
-  font-weight: lighter;
-  font-size: 1.55vw;
-  text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
   text-decoration: none;
-  border: none;
-  border-radius: 25px;
-  color: #664d71;
-  background-color: var(--purple-color);
+  color: purple;
+  font-weight: bold;
+  transition: color .1s;
 }
 
-  .login-options {
-    display: flex;
-    justify-content: space-around;
-  }
-
-
-  .login-form {
-    padding: 1rem 1.5em;
-    border-radius: .5rem;
-    background-color: #b1b1b1;
-    display: inline-block;
-    width: 45%;
-    box-shadow: 5px 5px #888888;
-  }
-
-  .login-form h4 {
-    color: #261f2a;
-    margin-bottom: 1rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    text-align: center;
-  }
-
-  .login-form label {
-    text-transform: uppercase;
-    color: #55425e;
-    letter-spacing: 1px;
-    font-weight: 600;
-    margin-bottom: 1rem;
-  }
-
-  .login-form input {
-    color: #332a38;
-  }
-
-  .login-form input:focus {
-    opacity: .6;
-  }
-
-  .email-login,
-  .password-login {
-    border-radius: 30px;
-    border: none;
-    opacity: .1;
-    transition: all ease .4s;
-  }
-
-  .login-form-button {
-    border-radius: 30px;
-    border: 1px solid #fff;
-    color: #fff;
-    background-color: #836690;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    width: 100%;
-    padding: 1rem;
-    transition: all ease .4s;
-  }
-
-  .login-form-button:hover {
-    background-color: #44c8ed;
-    border-color: #44c8ed;
-  }
-
-
-/*Signup-form*/
-
-#signup-form {
-  padding: 10px 15px;
-  font-weight: lighter;
-  font-size: 1.55vw;
-  text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-  text-decoration: none;
-  border: none;
-  border-radius: 25px;
-  color: #5c765a;
-  background-color: var(--green-color);
+a:hover {
+  color: #3486eb;
 }
 
-  .signup-form {
-    padding: 1rem 1.5em;
+form label {
+  display: block;
+}
+
+.login-form {
+  /* padding: 1rem 1.5em;
+  border-radius: .5rem;
+  background-color: grey;
+  display: inline-block;
+  width: 45%;
+  margin: 25px;
+  justify-content: center;
+  align-items: center;
+} */  margin: auto;
+  width: 50%;
+  border: 3px solid rgba(61, 65, 61, 0.116);
+  padding: 10px;
+  margin-bottom: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup-form {
+  width: 50%;
+  border: 3px solid rgba(61, 65, 61, 0.116);
+  padding: 10px;
+  margin: auto;
+}
+
+/* padding: 1rem 1.5em;
     display: inline-block;
     border-radius: .5rem;
-    background-color: #b1b1b1;
+    background-color: grey;
     width: 45%;
     color: black;
-    box-shadow: 5px 5px #888888;
-  }
+  } */
 
-  .signup-form h4 {
-    color: #22362f;
-    margin-bottom: 1rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    text-align: center;
-  }
+.bottomLabel {
+  position:relative;
+  top: 300px;
+  bottom: 0;
+  left: 0;
+  font-size: x-large;
+}
+.published-date{
+  color: black;
+}
+.question-title{
+  margin-left: 10px;
+}
+.question-body{
+  margin: 30px;
+}
+.username{
+  color: black;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 20px;
+  font-weight: bold;
+}
+/* #questions-container {
+  display: block;
+  margin: auto;
+} */
 
-  .signup-form label {
-    text-transform: uppercase;
-    color: #2d473e;
-    letter-spacing: 1px;
-    font-weight: 600;
-    margin-bottom: 1rem;
-  }
+.search{
+  position: absolute;
+  top: 150px;
+  right: 20px;
+}
 
-  .signup-form input {
-    color: black;
-  }
-
-  .signup-form input:focus {
-    opacity: .6;
-  }
-
-  .username-signup,
-  .email-signup,
-  .password-signup {
-    border-radius: 30px;
-    border: none;
-    opacity: .1;
-    transition: all ease .4s;
-  }
-
-  .signup-form-button {
-    border-radius: 30px;
-    border: 1px solid #fff;
-    color: #fff;
-    background-color: #5a947f;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    width: 100%;
-    padding: 1rem;
-    transition: all ease .4s;
-  }
-
-  .signup-form-button:hover {
-    background-color: #44c8ed;
-    border-color: #44c8ed;
-  }
+.searches{
+  position: absolute;
+  right: 20px;
+}
+.navbar{
+  padding: 10px;
+  position:  sticky;
+  z-index: 100;
+}
+.secondarysearch{
+  position: sticky;
+  z-index: 1000;
+  top: 0;
+}
