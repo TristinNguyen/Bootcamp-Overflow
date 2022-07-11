@@ -5,7 +5,7 @@ async function answerFormHandler(event) {
 
     const question_id = window.location.toString().split('/')[window.location.toString().split('/').length - 1];
 
-    if(answer_text) {
+    if (answer_text) {
         const response = await fetch('/api/answers', {
             method: 'POST',
             body: JSON.stringify({
@@ -17,10 +17,9 @@ async function answerFormHandler(event) {
             }
         });
 
-        if(response.ok) {
+        if (response.ok) {
             document.location.reload();
-        }
-        else {
+        } else {
             alert(response.statusText);
         }
     }

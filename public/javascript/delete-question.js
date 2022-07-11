@@ -7,10 +7,9 @@ async function deleteFormHandler(event) {
         method: 'DELETE',
     });
 
-    if(response.ok) {
+    if (response.ok) {
         document.location.replace('/dashboard');
-    }
-    else {
+    } else {
         alert(response.statusText);
     }
 }
