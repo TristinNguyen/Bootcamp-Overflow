@@ -2,13 +2,13 @@ var modal = document.getElementById("newquestion-popout");
 var btn = document.getElementById("newquestion");
 var cancel = document.getElementsByClassName("close")[0];
 
-btn.onclick = function () {
-  modal.style.display = "block";
-}
+// btn.onclick = function () {
+//   modal.style.display = "block";
+// }
 
-cancel.onclick = function () {
-  modal.style.display = "none";
-}
+// cancel.onclick = function () {
+//   modal.style.display = "none";
+// }
 
 async function newQuestionHandler(event) {
   event.preventDefault();
