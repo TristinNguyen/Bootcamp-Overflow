@@ -9,7 +9,7 @@ router.get("/", (req, res) => {
   Question.findAll({
     attributes: [
       "id",
-      "question_content",
+      "question",
       "title",
       "created_at",
       [
@@ -54,7 +54,7 @@ router.get("/question/:id", withAuth, (req, res) => {
     },
     attributes: [
       'id',
-      'question_content',
+      'question',
       'title',
       'created_at',
       [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE question.id = vote.question_id)'), 'vote_count']

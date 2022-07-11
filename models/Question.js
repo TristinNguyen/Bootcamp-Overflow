@@ -19,7 +19,7 @@ class Question extends Model {
           attributes: [
             'id',
             'title',
-            'question_content',
+            'question',
             'created_at',
             [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE Question.id = vote.question_id)'), 'vote_count'],
           ],
