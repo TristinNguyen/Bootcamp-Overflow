@@ -11,7 +11,7 @@ router.get('/', withAuth, (req, res) => {
     Question.findAll({
       attributes: [
         'id',
-        'question_content',
+        'question',
         'title',
         'created_at',
         [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE question.id = vote.question_id)'), 'vote_count']
@@ -47,7 +47,7 @@ router.get('/edit/:id', withAuth, (req, res) => {
     Question.findByPk(req.params.id, {
       attributes: [
         'id',
-        'question_content',
+        'question',
         'title',
         'created_at',
         [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE question.id = vote.question_id)'), 'vote_count']
