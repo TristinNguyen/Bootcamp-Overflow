@@ -136,4 +136,5 @@ form label {
 
 .navbar-image {
   image-rendering: auto;
+  z-index: 199px;
 }
