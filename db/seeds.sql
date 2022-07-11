@@ -10,7 +10,7 @@ VALUES
   (6, 'Bart Simpson', 'You@suck.com', 'IHeartCartman');
 
 
-INSERT INTO question (title, question, user_id) 
+INSERT INTO question (title, question_content, user_id) 
 VALUES  
   ('Why Me?', 'What is the meaning of life?', 1),
   ('Chilli', 'What is the best way to cook someones parents?', 5),
