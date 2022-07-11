@@ -54,7 +54,18 @@ User.bulkCreate([
     title: 'what time is it?',
     question_content: 'Now is the time for all good men to come to the aid of their country',
     user_id: 2
+    },
+    {
+    title: 'Gary',
+    question_content: 'Who is the best instrustor you have ever had?',
+    user_id: 4
+    },
+    {
+      title: 'Lacey',
+      question_content: 'who is Garys favorite student?',
+      user_id: 2
     }
+
   ])
   .catch(err => {
     console.log(err);
