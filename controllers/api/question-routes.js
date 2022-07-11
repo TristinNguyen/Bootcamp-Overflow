@@ -35,13 +35,6 @@ router.get('/', (req, res) => {
         }
       ]
     })
-    .then(data => {
-      if (!data) {
-        res.status(404).json({message: 'No Question found with this id'});
-        return;
-      }
-      res.json(data);
-    })
     .then(dbQuestionData => res.json(dbQuestionData))
     .catch(err => {
         console.log(err);
@@ -101,7 +94,7 @@ router.get('/:id', (req, res) => {
 router.post('/', withAuth, (req, res) => {
     Question.create({
         title: req.body.title,
-        post: req.body.post,
+        question_content: req.body.question,
         user_id: req.session.user_id
     })
     .then(dbQuestionData => res.json(dbQuestionData))

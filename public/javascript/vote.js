@@ -44,5 +44,5 @@ async function downVoteHandler(event) {
     }
 }
 
-document.querySelector('#up-vote-btn').addEventListener('click', upVoteHandler);
-document.querySelector('#down-vote-btn').addEventListener('click', downVoteHandler); 
+// document.querySelector('#up-vote-btn').addEventListener('click', upVoteHandler);
+// document.querySelector('#down-vote-btn').addEventListener('click', downVoteHandler); 

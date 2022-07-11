@@ -14,7 +14,7 @@ async function newQuestionHandler(event) {
     event.preventDefault();
 
    const title = document.querySelector('input[name="question-title"]').value;
-   const question_content = document.querySelector('input[name="question"]').value;
+   const question_content = document.querySelector('input[name="question-content"]').value;
 
     const response = await fetch('/api/questions', {
         method: 'POST',

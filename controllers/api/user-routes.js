@@ -63,19 +63,21 @@ router.post('/', (req, res) => {
   User.create({
     username: req.body.username,
     email: req.body.email,
-    password: req.body.password
-  })
-    .then(dbUserData => req.session.save (()=>{
-      req.session.user_id=dbUserData.id;
-      req.session.user_name=dbUserData.username;
-      req.session.logged_in=true;
-      res.json(dbUserData);
-    }))
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
+    password: req.body.password,
+    first_name: req.body.first_name,
+    last_name: req.body.last_name
+})
+.then(dbUserData => {
+    // access session information
+    req.session.save(() => {
+        req.session.user_id = dbUserData.id;
+        req.session.username = dbUserData.username;
+        req.session.loggedIn = true;
+
+        res.json(dbUserData);
     });
-  });
+});
+});
 
 // POST - user login: /api/login
 router.post('/login', (req, res) => {
@@ -117,6 +119,7 @@ router.post('/logout', (req, res) => {
   }
 });
 
+
 // PUT - updatea a user: /api/users/1
 router.put('/:id', (req, res) => {
   // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
@@ -142,23 +145,24 @@ router.put('/:id', (req, res) => {
 });
 
 // DELETE /api/users/1
-router.delete('/:id', (req, res) => {
-  User.destroy({
-    where: {
-      id: req.params.id
-    }
-  })
-    .then(dbUserData => {
-      if (!dbUserData) {
-        res.status(404).json({ message: 'No user found with this id' });
-        return;
-      }
-      res.json(dbUserData);
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
+// router.delete('/:id', (req, res) => {
+//   User.destroy({
+//     where: {
+//       id: req.params.id
+//     }
+//   })
+//     .then(dbUserData => {
+//       if (!dbUserData) {
+//         res.status(404).json({ message: 'No user found with this id' });
+//         return;
+//       }
+//       res.json(dbUserData);
+//     })
+//     .catch(err => {
+//       console.log(err);
+//       res.status(500).json(err);
+//     });
+// });
+
 
 module.exports = router;

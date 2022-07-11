@@ -1,7 +1,7 @@
 {
   "name": "boot-camp-overflow",
   "version": "1.0.0",
-  "description": "",
+  "description": "## Purpose Create a comfortable place for current BootCamp students to ask for assistance in their BootCamp course.",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -16,6 +16,18 @@
     "express-handlebars": "^6.0.6",
     "express-session": "^1.17.3",
     "mysql2": "^2.3.3",
-    "sequelize": "^6.21.2"
-  }
+    "sequelize": "^6.21.3"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TristinNguyen/Bootcamp-Overflow.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TristinNguyen/Bootcamp-Overflow/issues"
+  },
+  "homepage": "https://github.com/TristinNguyen/Bootcamp-Overflow#readme"
 }
