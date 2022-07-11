@@ -1,7 +1,111 @@
 body {
-    background-color: orange;
-};
+  background-color: wheat;
+}
 
 .title {
-    color: aqua;
-};
+  color: rgb(6, 100, 143);
+  text-align: center;
+  display: flex;
+  width: 50%;
+  height: 200px;
+  margin: auto;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+a {
+  text-decoration: none;
+  color: purple;
+  font-weight: bold;
+  transition: color .1s;
+}
+
+a:hover {
+  color: #3486eb;
+}
+
+form label {
+  display: block;
+}
+
+.login-form {
+  /* padding: 1rem 1.5em;
+  border-radius: .5rem;
+  background-color: grey;
+  display: inline-block;
+  width: 45%;
+  margin: 25px;
+  justify-content: center;
+  align-items: center;
+} */  margin: auto;
+  width: 50%;
+  border: 3px solid rgba(61, 65, 61, 0.116);
+  padding: 10px;
+  margin-bottom: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup-form {
+  width: 50%;
+  border: 3px solid rgba(61, 65, 61, 0.116);
+  padding: 10px;
+  margin: auto;
+}
+
+/* padding: 1rem 1.5em;
+    display: inline-block;
+    border-radius: .5rem;
+    background-color: grey;
+    width: 45%;
+    color: black;
+  } */
+
+.bottomLabel {
+  position:relative;
+  top: 300px;
+  bottom: 0;
+  left: 0;
+  font-size: x-large;
+}
+.published-date{
+  color: black;
+}
+.question-title{
+  margin-left: 10px;
+}
+.question-body{
+  margin: 30px;
+}
+.username{
+  color: black;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 20px;
+  font-weight: bold;
+}
+/* #questions-container {
+  display: block;
+  margin: auto;
+} */
+
+.search{
+  position: absolute;
+  top: 150px;
+  right: 20px;
+}
+
+.searches{
+  position: absolute;
+  right: 20px;
+}
+.navbar{
+  padding: 10px;
+  position:  sticky;
+  z-index: 100;
+}
+.secondarysearch{
+  position: sticky;
+  z-index: 1000;
+  top: 0;
+}

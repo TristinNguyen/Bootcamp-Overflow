@@ -1,0 +1,31 @@
+<article>
+    <a href="/dashboard"> &larr; Back to dashboard</a>
+    <h2>
+        Edit question
+    </h2>
+    <form class="edit-question-form">
+        <div>
+            <input name="question-title" type="text" value="{{question.title}}" />
+            <span>({{post.question_content}})</span>
+        </div>
+        <div>
+            {{question.vote_count}} vote(s) by you on {{question.created_at}}
+            |
+            <a href="/question/{{question.id}}">{{question.answers.length}} answer(s) </a>
+        </div>
+        <button type="submit">Save question</button>
+        <button type="button" class="delete-question-btn">Delete question</button>
+    </form>
+</article>
+
+<form class="answer-form">
+    <div>
+        <textarea name="answer-body"></textarea>
+    </div>
+
+    {{> answers question.answers }}
+
+    <div>
+        <button type="submit">Add answer</button>
+    </div>
+</form>
