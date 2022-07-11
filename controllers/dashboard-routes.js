@@ -2,13 +2,13 @@ const router = require('express').Router();
 const sequelize = require('../config/connection');
 // req user to be logged in
 const withAuth = require('../utils/auth');
-const { question, User, answer } = require('../models');
+const { Question, User, Answer } = require('../models');
 
 // GET dashboard page
 router.get('/', withAuth, (req, res) => {
   console.log(req.query);
 
-    question.findAll({
+    Question.findAll({
       attributes: [
         'id',
         'question_content',
@@ -18,7 +18,7 @@ router.get('/', withAuth, (req, res) => {
       ],
       include: [
         {
-          model: answer,
+          model: Answer,
           attributes: ['id', 'answer_text', 'question_id', 'user_id', 'created_at'],
           include: {
             model: User,
@@ -44,7 +44,7 @@ router.get('/', withAuth, (req, res) => {
 });
 
 router.get('/edit/:id', withAuth, (req, res) => {
-    question.findByPk(req.params.id, {
+    Question.findByPk(req.params.id, {
       attributes: [
         'id',
         'question_content',
@@ -54,7 +54,7 @@ router.get('/edit/:id', withAuth, (req, res) => {
       ],
       include: [
         {
-          model: answer,
+          model: Answer,
           attributes: ['id', 'answer_text', 'question_id', 'user_id', 'created_at'],
           include: {
             model: User,
