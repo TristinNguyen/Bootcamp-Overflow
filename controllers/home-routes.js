@@ -2,11 +2,11 @@ const router = require("express").Router();
 const res = require("express/lib/response");
 const sequelize = require("../config/connection");
 const withAuth = require('../utils/auth');
-const { question, User, answer} = require("../models");
+const { Question, User, Answer} = require("../models");
 
 router.get("/", (req, res) => {
   console.log(req.session);
-  question.findAll({
+  Question.findAll({
     attributes: [
       "id",
       "question_content",
@@ -21,7 +21,7 @@ router.get("/", (req, res) => {
     ],
     include: [
       {
-        model: answer,
+        model: Answer,
         attributes: ["id", "answer_text", "question_id", "user_id", "created_at"],
         include: {
           model: User,
@@ -48,7 +48,7 @@ router.get("/", (req, res) => {
 router.get("/question/:id", withAuth, (req, res) => {
   const id2 = req.params.id
 
-  question.findOne({
+  Question.findOne({
     where: {
       id: id2
     },
@@ -61,7 +61,7 @@ router.get("/question/:id", withAuth, (req, res) => {
     ],
     include: [
       {
-        model: answer,
+        model: Answer,
         attributes: [
           'id',
           'answer_text',

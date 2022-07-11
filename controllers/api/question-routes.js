@@ -99,7 +99,7 @@ router.get('/:id', (req, res) => {
 
 // create a question
 router.post('/', withAuth, (req, res) => {
-    question.create({
+    Question.create({
         title: req.body.title,
         post: req.body.post,
         user_id: req.session.user_id
