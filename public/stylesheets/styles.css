@@ -110,7 +110,18 @@ form label {
   z-index: 1000;
   top: 0;
   }
-.nav-link{
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+.nav-buttons{
+  display: inline-flex;
+  padding: 10px;
+}
+#button1{
+  margin-right: 10px;
+}
+.question-form{
+  position: relative;
+  align-items: center;
+  align-self:center;
+}
+.navbar-image{
+  image-rendering: auto;
 }
