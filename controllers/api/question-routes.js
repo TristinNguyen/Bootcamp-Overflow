@@ -16,7 +16,6 @@ router.get('/', (req, res) => {
         'question_content',
         'title',
         'created_at',
-<<<<<<< HEAD
         [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE Question.id = vote.question_id)'), 'vote_count']
       ],
       include: [
@@ -42,30 +41,6 @@ router.get('/', (req, res) => {
         return;
       }
       res.json(data);
-=======
-        [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE question.id = vote.question_id)'), 'vote_count']
-        ],
-        include: [
-            {
-                model: answer,
-                attributes: [
-                'id',
-                'answer_text',
-                'question_id',
-                'user_id',
-                'created_at'
-                ],
-                include: {
-                    model: User,
-                    attributes: ['username']
-                }
-            },
-            {
-                model: User,
-                attributes: ['username']
-            },
-        ]
->>>>>>> main
     })
     .then(dbQuestionData => res.json(dbQuestionData))
     .catch(err => {
