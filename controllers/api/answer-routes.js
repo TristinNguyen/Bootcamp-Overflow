@@ -1,9 +1,9 @@
 const router = require('express').Router();
 const withAuth = require('../../utils/auth');
-const { answer } = require('../../models');
+const { Answer } = require('../../models');
 
 router.get('/', (req, res) => {
-  answer.findAll()
+  Answer.findAll()
     .then(dbAnswerData => res.json(dbAnswerData))
     .catch(err => {
       console.log(err);
@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
 });
 // post a new comment to a post
 router.post( '/', withAuth, (req, res) => {
-  answer.create({
+  Answer.create({
     answer_text: req.body.answer_text,
     user_id: req.body.user_id,
     question_id: req.body.question_id
@@ -26,7 +26,7 @@ router.post( '/', withAuth, (req, res) => {
 
 // delete a comment but you must be igned in
 router.delete('/:id', withAuth, (req, res) => {
-  answer.destroy({
+  Answer.destroy({
     where: {
       id: req.params.id
     }
