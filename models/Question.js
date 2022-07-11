@@ -50,7 +50,7 @@ Question.init(
       autoIncrement: true
     },
     title: {
-      type: DataTypes.STRING(100),
+      type: DataTypes.STRING(150),
       allowNull: false
     },
     question_content: {
