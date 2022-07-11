@@ -1,7 +1,7 @@
 async function upVoteHandler(event) {
     event.preventDefault();
 
-    const id = window.location.toString().split('/') [
+    const id = window.location.toString().split('/')[
         window.location.toString().split('/').length - 1
     ];
 
@@ -13,10 +13,9 @@ async function upVoteHandler(event) {
         headers: {}
     });
 
-    if(response.ok) {
+    if (response.ok) {
         document.location.reload();
-    }
-    else {
+    } else {
         alert(response.statusText);
     }
 }
@@ -24,7 +23,7 @@ async function upVoteHandler(event) {
 async function downVoteHandler(event) {
     event.preventDefault();
 
-    const id = window.location.toString().split('/') [
+    const id = window.location.toString().split('/')[
         window.location.toString().split('/').length - 1
     ];
 
@@ -36,13 +35,12 @@ async function downVoteHandler(event) {
         headers: {}
     });
 
-    if(response.ok) {
+    if (response.ok) {
         document.location.reload();
-    }
-    else {
+    } else {
         alert(response.statusText);
     }
 }
 
 document.querySelector('#up-vote-btn').addEventListener('click', upVoteHandler);
-document.querySelector('#down-vote-btn').addEventListener('click', downVoteHandler); 
+document.querySelector('#down-vote-btn').addEventListener('click', downVoteHandler);

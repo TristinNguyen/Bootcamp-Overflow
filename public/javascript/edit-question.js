@@ -10,13 +10,14 @@ async function editFormHandler(event) {
         body: JSON.stringify({
             title
         }),
-        headers: { 'Content-Type': 'application/json' }
+        headers: {
+            'Content-Type': 'application/json'
+        }
     });
 
-    if(response.ok) {
+    if (response.ok) {
         document.location.replace('/dashboard');
-    }
-    else {
+    } else {
         alert(response.statusText);
     }
 }

@@ -11,12 +11,13 @@ async function signupFormHandler(event) {
                 email,
                 password
             }),
-            headers: {"Content-Type": "application/json"}
+            headers: {
+                "Content-Type": "application/json"
+            }
         });
         if (response.ok) {
             document.location.replace("/dashboard");
-        }
-        else {
+        } else {
             alert(response.statusText);
         }
     }
@@ -32,12 +33,13 @@ async function loginFormHandler(event) {
                 email,
                 password
             }),
-            headers: {"Content-Type": "application/json"}
+            headers: {
+                "Content-Type": "application/json"
+            }
         });
         if (response.ok) {
             document.location.replace("/dashboard");
-        }
-        else {
+        } else {
             alert(response.statusText);
         }
     }
