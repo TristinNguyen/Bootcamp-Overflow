@@ -88,3 +88,24 @@ form label {
   display: block;
   margin: auto;
 } */
+
+.search{
+  position: absolute;
+  top: 150px;
+  right: 20px;
+}
+
+.searches{
+  position: absolute;
+  right: 20px;
+}
+.navbar{
+  padding: 10px;
+  position:  sticky;
+  z-index: 100;
+}
+.secondarysearch{
+  position: sticky;
+  z-index: 1000;
+  top: 0;
+}
