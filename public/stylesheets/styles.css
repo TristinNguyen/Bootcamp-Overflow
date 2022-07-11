@@ -103,11 +103,14 @@ form label {
   padding: 10px;
   position:  sticky;
   z-index: 100;
-  background-color: rgba(95, 125, 224, 0.719) !important;
+  background-color: rgb(6, 100, 143) !important;
 }
 .secondarysearch{
   position: sticky;
   z-index: 1000;
   top: 0;
-  
+  }
+.nav-link{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 }
