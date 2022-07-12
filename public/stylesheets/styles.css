@@ -137,3 +137,28 @@ form label {
   image-rendering: auto;
   z-index: 199px;
 }
+
+.post {
+  margin-bottom: 2%;
+  line-height: 150%;
+}
+
+.post .title span {
+  font-style: italic;
+  font-size: 90%;
+  color: #7d7d7d;
+}
+
+.new-post-form input {
+  width: 300px;
+}
+
+.edit-post-form {
+  margin-bottom: 5%;
+}
+
+.comment .meta {
+  font-size: 90%;
+  margin-bottom: .5%;
+  opacity: .6;
+}

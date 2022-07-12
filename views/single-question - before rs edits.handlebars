@@ -1,0 +1,32 @@
+<div class="main">
+  <div class="sub-main">
+     <a class="dashboardbtn" href="../dashboard">Previous Page</a>
+  </div>
+</div>
+
+
+{{> questions question}}
+
+{{#if loggedIn}}
+<article class="singlequestion">
+<form class="answer-form">
+  <div class="answer-text">
+    <p class="">Type your answer below!</p>
+  <div>
+        <textarea name="answer-body" id="answer-body"></textarea>
+    </div>
+
+    <div>
+        <button type="submit" class="singlequestion-form-button">Add your answer!</button>
+    </div>
+  </div>
+</form>
+</article>
+<br><br>
+{{/if}}
+{{> answers question.answers}}
+
+{{#if loggedIn}}
+<script src="/javascript/answer.js"></script>
+<script src="/javascript/vote.js"></script>
+{{/if}}
