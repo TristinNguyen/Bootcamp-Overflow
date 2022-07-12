@@ -1,11 +1,11 @@
 //this collects and packages up all the API routes
 const router = require('express').Router();
 const homeRoutes = require('./home-routes.js');
-const dashboardRoutes = require('./dashboard-routes.js');
 const { append } = require('express/lib/response');
 
-
 const apiRoutes = require('./api');
+const dashboardRoutes = require('./dashboard-routes.js');
+
 
 //add API prefixes
 router.use('/api', apiRoutes);

@@ -4,6 +4,7 @@ const sequelize = require("../config/connection");
 const withAuth = require('../utils/auth');
 const { Question, User, Answer} = require("../models");
 
+// get all questions
 router.get("/", (req, res) => {
   console.log(req.session);
   Question.findAll({
@@ -41,6 +42,7 @@ router.get("/", (req, res) => {
     });
 });
 
+// get one question
 router.get("/question/:id", withAuth, (req, res) => {
   const id2 = req.params.id
 

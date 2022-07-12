@@ -9,6 +9,7 @@ router.get('/', withAuth, (req, res) => {
   console.log(req.query);
 
     Question.findAll({
+      // order: [['created_at', 'DESC']],
       attributes: [
         'id',
         'question_content',
@@ -43,6 +44,7 @@ router.get('/', withAuth, (req, res) => {
     });
 });
 
+// edit question
 router.get('/edit/:id', withAuth, (req, res) => {
     Question.findByPk(req.params.id, {
       attributes: [
