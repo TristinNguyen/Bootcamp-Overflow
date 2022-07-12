@@ -96,12 +96,11 @@ form label {
 } */
 
 .search {
-  position: absolute;
-  top: 150px;
-  right: 20px;
+  border-radius: 8px;
 }
 
 .searches {
+  display: flex;
   position: absolute;
   right: 20px;
 }
