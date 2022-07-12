@@ -1,10 +1,7 @@
 <div class="question-container">
-
-
-
   <div class="question-body">
     <div class="question-title">
-      <h2><a href="/question/{{id}}">{{title}}</a></h2>
+      <h2><a href="/dashboard/questions/{{id}}">{{title}}</a></h2>
     </div>
     <div class="blog-summary">
       <p>{{question_content}}</p>
@@ -12,14 +9,16 @@
 
     <div class="question-header">
       <div class="question-author--no-cover">
-        <h4 class="username">{{user.username}}</h4>
+        <h4 class="username">Username: {{user.username}}</h4>
+      </div>
+      <div>
+        <h4 class="username">Upvotes: {{vote_count}}</h4>
       </div>
     </div>
     <div class="question-footer">
-      <ul>
-        <a class="published-date">{{created_at}}</a>
+      {{!-- <a class="published-date">{{created_at}}</a>--}}
+      <p>{{created_at}}</p>
     </div>
-    </ul>
   </div>
 </div>
 

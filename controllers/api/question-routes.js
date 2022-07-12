@@ -22,7 +22,7 @@ router.get('/', (req, res) => {
         // include the Answer model here:
         {
           model: Answer,
-          attributes: ['id', 'Answer_text', 'question_id', 'user_id', 'created_at'],
+          attributes: ['id', 'answer_text', 'question_id', 'user_id', 'created_at'],
           include: {
             model: User,
             attributes: ['username']
@@ -37,10 +37,11 @@ router.get('/', (req, res) => {
     })
     .then(data => {
       if (!data) {
-        res.status(404).json({message: 'No Question found with this id'});
+        res.status(404).json({message: 'No Questions found'});
         return;
       }
       res.json(data);
+
     })
     .then(dbQuestionData => res.json(dbQuestionData))
     .catch(err => {

@@ -1,30 +1,41 @@
-<div class="main">
-  <div class="sub-main">
-     <a class="dashboardbtn" href="../dashboard">Previous Page</a>
+<article class="post">
+  <div class="meta">
+    <h4>{{question.title}}</h4>
+    <p>{{question.question_content}}</p>
+    {{question.vote_count}} UpVote(s) by {{question.user.username}}
+    <br>
+    {{question.created_at}}
+    |
+    <br>
+    <a href="/questions/{{question.id}}">{{question.answers.length}} comment(s)</a>
   </div>
-</div>
-
-
-{{> questions question}}
+</article>
 
 {{#if loggedIn}}
-<article class="singlequestion">
 <form class="answer-form">
-  <div class="answer-text">
-    <p class="">Type your answer below!</p>
   <div>
-        <textarea name="answer-body" id="answer-body"></textarea>
-    </div>
+    <textarea name="answer-body"></textarea>
+  </div>
 
-    <div>
-        <button type="submit" class="singlequestion-form-button">Add your answer!</button>
-    </div>
+  <div>
+    <button type="submit">add answer</button>
+    <button type="button" class="upvote-btn">upvote</button>
   </div>
 </form>
-</article>
-<br><br>
 {{/if}}
-{{> answers question.answers}}
+
+<div class="comments">
+  {{#each question.comments}}
+  <section class="comment">
+    <div class="meta">
+      {{user.username}} on {{created_at}}
+    </div>
+    <div class="text">
+      {{question_content}}
+    </div>
+  </section>
+  {{/each}}
+</div>
 
 {{#if loggedIn}}
 <script src="/javascript/answer.js"></script>

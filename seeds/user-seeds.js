@@ -84,8 +84,8 @@ const userdata = [
   },
   {
     username: 'Rich',
-    email: 'rs@gmail.com',
-    password: 'rs123'
+    email: 'rs',
+    password: 'rs'
   }
 ];
 
