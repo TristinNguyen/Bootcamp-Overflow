@@ -1,27 +1,31 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="/">BootCamp Overflow</a>
+<nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light">
+  <a class="navbar-brand" href="#">BootCamp Overflow</a>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <a class="searches">
-    <input id="search-input" type="text" placeholder="Please Search for Keywords">
-    <button class="search-button" id="search-button">Search</button>
-  </a>
+    <a class="searches">
+        <input id="search-input" type="text" placeholder="Please Search for Keywords">
+        <button class="search-button" id="search-button">Search</button>
+    </a>
 
   <div class="collapse navbar-collapse">
-    <ul class="navbar-nav mr-auto d-flex flex-row">
+    <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <div class="nav-buttons">
-          <a button type="button" class="btn btn-primary" id="button1" href="/">Home</a>
-          <a button type="button" class="btn btn-primary" id="button2" href="/profile">Profile</a>
-        </div>
+        <a class="nav-link" href="/">Home</a>
       </li>
+      {{#if loggedIn}}
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Profile</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Log Out</a>
+        </li>
+      {{/if}}
+        <li class="nav-item active">
+          <a class="navbar-image" href="#">
+            <img src="/assets/images/clipart2022190.png" width="30" height="30" alt="">        </li>
     </ul>
-    <a class="navbar-image" href="#">
-      <img src="/assets/images/clipart2022190.png" width="30" height="30" alt="">
-    </a>
   </div>
 </nav>

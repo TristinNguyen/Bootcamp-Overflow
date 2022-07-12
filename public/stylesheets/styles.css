@@ -110,7 +110,7 @@ form label {
   padding: 10px;
   position: sticky;
   z-index: 100;
-  background-color: rgb(6, 100, 143) !important;
+  /* background-color: rgb(6, 100, 143) !important; */
 }
 
 .secondarysearch {
