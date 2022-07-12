@@ -1,12 +1,12 @@
-const {
-  Model,
-  DataTypes
-} = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 // create our Question model
 class Question extends Model {
   static vote(body, models) {
+    console.log("------------ UPVOTE METHOD ------------")
+    console.log("userId: ", body.user_id, "questionId: ", body.question_id)
+    console.log( "models: ", models)
     return models.Vote.create({
         user_id: body.user_id,
         question_id: body.question_id

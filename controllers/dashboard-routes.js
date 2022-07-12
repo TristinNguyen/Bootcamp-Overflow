@@ -2,7 +2,7 @@ const router = require('express').Router();
 const sequelize = require('../config/connection');
 // req user to be logged in
 const withAuth = require('../utils/auth');
-const { Question, User, Answer } = require('../models');
+const { Question, User, Answer, Vote } = require('../models');
 
 // GET dashboard page
 router.get('/', withAuth, (req, res) => {
@@ -142,5 +142,27 @@ router.get('/edit/:id', withAuth, (req, res) => {
         res.status(500).json(err);
       });
 });
+
+// upvote (votes technically alter the question's data)
+router.put('/vote', withAuth, (req, res) => {
+  console.log('========== dashboard upVote route ==========')
+  // make sure the session exists first
+  // upvotes should only work if someone is logged in
+  console.log('route req.body: ', req.body)
+  if (req.session.user_id) {
+    // pass session id along with all destructured properties on req.body
+    Question.vote({ question_id: req.body.question_id, user_id: req.session.user_id }, { Vote, Answer, User })
+    .then(updatedVoteData => {
+        console.log(updatedVoteData)
+        res.json(updatedVoteData)
+      })
+      .catch(err => {
+          console.log(err);
+          res.status(400).json(err);
+      });
+  }
+});
+
+
 
 module.exports = router;

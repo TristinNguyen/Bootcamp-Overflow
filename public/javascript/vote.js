@@ -1,16 +1,18 @@
 async function upVoteHandler(event) {
+    // console.log('upVote button clicked');
     event.preventDefault();
 
     const id = window.location.toString().split('/')[
         window.location.toString().split('/').length - 1
     ];
-
-    const response = await fetch('/api/questions/vote????', {
+    const response = await fetch('/dashboard/vote', {
         method: 'PUT',
         body: JSON.stringify({
             question_id: id
         }),
-        headers: {}
+        headers: {
+            'Content-Type': 'application/json'
+          }
     });
 
     if (response.ok) {
@@ -42,5 +44,5 @@ async function downVoteHandler(event) {
     }
 }
 
-document.querySelector('#up-vote-btn').addEventListener('click', upVoteHandler);
-document.querySelector('#down-vote-btn').addEventListener('click', downVoteHandler);
+document.querySelector('#upvote-btn').addEventListener('click', upVoteHandler);
+// document.querySelector('#down-vote-btn').addEventListener('click', downVoteHandler);
