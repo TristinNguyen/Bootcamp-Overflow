@@ -9,7 +9,7 @@ router.get("/", (req, res) => {
   Question.findAll({
     attributes: [
       "id",
-      "question",
+      "question_content",
       "title",
       "created_at",
       [
