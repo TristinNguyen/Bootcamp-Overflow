@@ -7,6 +7,16 @@ const questiondata = [
     user_id: 10
   },
   {
+  title: 'Gary',
+  question_content: 'Who is the best instrustor you have ever had?',
+  user_id: 4
+  },
+  {
+    title: 'Lacey',
+    question_content: 'who is Garys favorite student?',
+    user_id: 2
+  },
+  {
     title: 'Morbi non quam nec dui luctus rutrum.',
     question_content: 'Numquam, inventore in. Quaerat ex aliquam, dolorem voluptatibus architecto dicta dolores minima sequi necessitatibus, ipsum, dolore ab unde eligendi numquam.',
     user_id: 8
