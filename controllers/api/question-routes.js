@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
         //query config
         attributes: [
         'id',
-        'question',
+        'question_content',
         'title',
         'created_at',
         [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE Question.id = vote.question_id)'), 'vote_count']
@@ -58,7 +58,7 @@ router.get('/:id', (req, res) => {
         },
         attributes: [
             'id',
-            'question',
+            'question_content',
             'title',
             'created_at',
             [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE question.id = vote.question_id)'), 'vote_count']
