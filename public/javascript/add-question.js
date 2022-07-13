@@ -33,5 +33,7 @@ async function newQuestionHandler(event) {
   }
 }
 
+document.getElementById('addQuestion').addEventListener('click', btn.onclick);
+
 // document.querySelector('.newquestion').addEventListener('click', btn.onclick);
 document.querySelector('.new-question-form').addEventListener('submit', newQuestionHandler);

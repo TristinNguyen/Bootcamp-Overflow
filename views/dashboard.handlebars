@@ -2,21 +2,27 @@
 {{> jumbotron}}
 <!-- Jumbotron -->
 
-<div class="maindashboard">
-    <article class="newquestionbtn">{{> newquestion}}</article>
-    {{!-- <article class="search">
-        <input id="search-input" type="text" placeholder="Please Search for Keywords">
-        <button class="search-button" id="search-button">Search</button>
-    </article> --}}
+<!-- list of user questions -->
+<div class="questions-container">
+    <h1 class="title">User Questions</h1>
+    <ol id="questions-container" class="questions">
+        {{#each questions as |question|}}
+            <li class="questionwidth">
+                {{> questions question}}
+            </li>
+        {{/each}}
+    </ol>
 </div>
-<br><br>
-<h1 class="title">User Questions</h1>
-<div class="container-fluid">
-<ol id="questions-container" class="questions">
+
+{{!-- <div>
+    <h1 class="title">User Questions</h1>
+
+    <ol id="questions-container" class="questions"></ol>
     {{#each questions as |question|}}
-    <li class="questionwidth">
         {{> questions question}}
-    </li>
     {{/each}}
-</ol>
-</div>
+    </ol>
+
+
+
+</div> --}}
