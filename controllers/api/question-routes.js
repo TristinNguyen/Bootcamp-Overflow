@@ -102,7 +102,7 @@ router.get('/:id', (req, res) => {
 router.post('/', withAuth, (req, res) => {
     Question.create({
         title: req.body.title,
-        post: req.body.post,
+        question_content: req.body.question_content,
         user_id: req.session.user_id
     })
     .then(dbQuestionData => res.json(dbQuestionData))
