@@ -45,6 +45,7 @@ router.get('/', withAuth, (req, res) => {
   });
 });
 
+
 // post a new answer to a post
 router.post( '/answers/', (req, res) => {
   console.log('============ POST ANSWERS ROUTE /dashboard/answers/ ============')
@@ -58,6 +59,10 @@ router.post( '/answers/', (req, res) => {
     console.log(err);
     res.status(400).json(err);
   })
+
+router.get('/add', (req, res) => {
+  res.render('newquestion', { loggedIn: true });
+
 });
 
 // get single question
