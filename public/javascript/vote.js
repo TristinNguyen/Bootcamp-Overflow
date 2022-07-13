@@ -18,7 +18,8 @@ async function upVoteHandler(event) {
     if (response.ok) {
         document.location.reload();
     } else {
-        alert(response.statusText);
+        // alert(response.statusText);
+        alert(response.status+'\nOnly one vote per person allowed!');
     }
 }
 
