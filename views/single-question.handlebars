@@ -1,15 +1,17 @@
-<article class="post">
-  <div class="meta">
-    <h4>{{question.title}}</h4>
-    <p>{{question.question_content}}</p>
-    {{question.vote_count}} UpVote(s) by {{question.user.username}}
-    <br>
-    {{question.created_at}}
-    |
-    <br>
-    <a href="/questions/{{question.id}}">{{question.answers.length}} comment(s)</a>
+<!-- Can only get to this page if logged in -->
+
+<!-- Jumbotron -->
+{{>jumbotron}}
+
+<!-- selected question -->
+<div class="x">
+  {{> questions question}}
+  <div class="x">
+
   </div>
-</article>
+</div>
+
+<br><br><br>
 
 {{#if loggedIn}}
 <form class="answer-form">
@@ -37,7 +39,7 @@
   {{/each}}
 </div>
 
-{{#if loggedIn}}
+
 <script src="/javascript/answer.js"></script>
 <script src="/javascript/vote.js"></script>
-{{/if}}
+
