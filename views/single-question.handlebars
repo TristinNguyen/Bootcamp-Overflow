@@ -1,43 +1,45 @@
-<article class="post">
-  <div class="meta">
-    <h4>{{question.title}}</h4>
-    <p>{{question.question_content}}</p>
-    {{question.vote_count}} UpVote(s) by {{question.user.username}}
-    <br>
-    {{question.created_at}}
-    |
-    <br>
-    <a href="/questions/{{question.id}}">{{question.answers.length}} comment(s)</a>
-  </div>
-</article>
+<!-- Can only get to this page if logged in -->
 
-{{#if loggedIn}}
-<form class="answer-form">
+<!-- Jumbotron -->
+{{>jumbotron}}
+
+<!-- selected question -->
+<div class="single-question-container">
+  {{> questions question}}
+</div>
+
+
+<!-- this is the form for new answers -->
+<form class="answers">
   <div>
-    <textarea name="answer-body"></textarea>
+    <textarea name="answer-body" class""></textarea>
   </div>
 
   <div>
     <button type="submit">add answer</button>
-    <button type="button" id="upvote-btn" class="upvote-btn">upvote</button>
+    <button type="button" id="upvote-btn" class="upvote-btn">upvote <i class="fa fa-thumbs-up"></i></button>
   </div>
 </form>
-{{/if}}
 
-<div class="comments">
-  {{#each question.comments}}
+
+<!-- display answer -->
+<div class="answers">
+  <div class="ans-title">
+    <h3>Answers</h3>
+  </div>
+  {{#each question.answers}}
   <section class="comment">
     <div class="meta">
-      {{user.username}} on {{created_at}}
+      <b>{{user.username}}</b> on {{created_at}}
     </div>
     <div class="text">
-      {{question_content}}
+      {{answer_text}}
     </div>
   </section>
   {{/each}}
+  {{question.answers.length}} comment(s)
 </div>
 
-{{#if loggedIn}}
 <script src="/javascript/answer.js"></script>
 <script src="/javascript/vote.js"></script>
-{{/if}}
+

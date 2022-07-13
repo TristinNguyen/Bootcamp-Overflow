@@ -86,12 +86,10 @@ router.get('/questions/:id', (req, res) => {
           res.status(404).json({ message: 'No question found with this id' });
           return;
       }
-      // res.json(dbQuestionData);
-      // serialize data before passing to template
+
       const question = dbQuestionData.get({ plain: true });
-      // let single_question = dbQuestionData.map(single_question => single_question.get({ plain: true }));
-      // console.log(single_question)
-      // res.json(single_question);
+      console.log(question)
+      // res.json(dbQuestionData);
       res.render('single-question', { question, loggedIn: true });
       })  
       .catch(err => {
