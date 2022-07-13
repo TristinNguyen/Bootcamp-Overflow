@@ -89,6 +89,7 @@ router.get('/questions/:id', (req, res) => {
 
       const question = dbQuestionData.get({ plain: true });
       console.log(question)
+      // res.json(dbQuestionData);
       res.render('single-question', { question, loggedIn: true });
       })  
       .catch(err => {

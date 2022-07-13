@@ -4,41 +4,41 @@
 {{>jumbotron}}
 
 <!-- selected question -->
-<div class="x">
+<div class="single-question-container">
   {{> questions question}}
-  <div class="x">
-
-  </div>
 </div>
 
-<br><br><br>
 
-{{#if loggedIn}}
-<form class="answer-form">
+<!-- this is the form for new answers -->
+<form class="answers">
   <div>
-    <textarea name="answer-body"></textarea>
+    <textarea name="answer-body" class""></textarea>
   </div>
 
   <div>
     <button type="submit">add answer</button>
-    <button type="button" id="upvote-btn" class="upvote-btn">upvote</button>
+    <button type="button" id="upvote-btn" class="upvote-btn">upvote <i class="fa fa-thumbs-up"></i></button>
   </div>
 </form>
-{{/if}}
 
-<div class="comments">
-  {{#each question.comments}}
+
+<!-- display answer -->
+<div class="answers">
+  <div class="ans-title">
+    <h3>Answers</h3>
+  </div>
+  {{#each question.answers}}
   <section class="comment">
     <div class="meta">
-      {{user.username}} on {{created_at}}
+      <b>{{user.username}}</b> on {{created_at}}
     </div>
     <div class="text">
-      {{question_content}}
+      {{answer_text}}
     </div>
   </section>
   {{/each}}
+  {{question.answers.length}} comment(s)
 </div>
-
 
 <script src="/javascript/answer.js"></script>
 <script src="/javascript/vote.js"></script>

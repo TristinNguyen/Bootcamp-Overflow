@@ -93,6 +93,8 @@ form label {
   /* margin-right: 3%; */
   padding-left: 1em;
   padding-right: 2em;
+  margin-bottom: 10px;
+  /* padding-bottom: 10px; */
 }
 
 
@@ -172,4 +174,29 @@ form label {
   font-size: 90%;
   margin-bottom: .5%;
   opacity: .6;
+}
+
+.comment {
+  padding: 1%;
+  margin-bottom: 1%;
+}
+
+.comment:nth-child(odd) {
+  background-color: #fff5eb;
+}
+
+.single-question-container{
+  margin-bottom: 2em;
+}
+
+.ans-title {
+  /* padding-left:1%; */
+  border-bottom: #3486eb solid;
+}
+
+.answers {
+  padding-left: 1em;
+  padding-right: 2em;
+  margin-bottom: 2em;
+
 }
