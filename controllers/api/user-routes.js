@@ -97,6 +97,7 @@ router.post('/login', (req, res) => {
       return;
     }
 req.session.save (()=>{
+  console.log('api logged in')
   req.session.user_id=dbUserData.id;
   req.session.user_name=dbUserData.username;
   req.session.logged_in=true;
@@ -107,8 +108,11 @@ req.session.save (()=>{
 });
 // allow user to log out if signed in
 router.post('/logout', (req, res) => {
-  if (req.session.loggedIn) {
+
+
+  if (req.session.logged_in) {
       req.session.destroy(() => {
+          res.json({message: "Logged out."})
           res.status(204).end();
       });
   }
