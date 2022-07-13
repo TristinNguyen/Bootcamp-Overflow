@@ -5,7 +5,7 @@ async function upVoteHandler(event) {
     const id = window.location.toString().split('/')[
         window.location.toString().split('/').length - 1
     ];
-    const response = await fetch('/dashboard/vote', {
+    const response = await fetch('/dashboard/questions/:id/vote', {
         method: 'PUT',
         body: JSON.stringify({
             question_id: id
@@ -44,5 +44,5 @@ async function downVoteHandler(event) {
     }
 }
 
-document.querySelector('#upvote-btn').addEventListener('click', upVoteHandler);
+document.querySelector('.upvote-btn').addEventListener('click', upVoteHandler);
 // document.querySelector('#down-vote-btn').addEventListener('click', downVoteHandler);

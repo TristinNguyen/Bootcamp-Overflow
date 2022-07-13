@@ -144,7 +144,7 @@ router.get('/edit/:id', withAuth, (req, res) => {
 });
 
 // upvote (votes technically alter the question's data)
-router.put('/vote', withAuth, (req, res) => {
+router.put('/questions/:id/vote', withAuth, (req, res) => {
   console.log('========== dashboard upVote route ==========')
   // make sure the session exists first
   // upvotes should only work if someone is logged in
