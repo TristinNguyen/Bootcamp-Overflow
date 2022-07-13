@@ -45,6 +45,21 @@ router.get('/', withAuth, (req, res) => {
   });
 });
 
+// post a new answer to a post
+router.post( '/answers/', (req, res) => {
+  console.log('============ POST ANSWERS ROUTE /dashboard/answers/ ============')
+  Answer.create({
+    answer_text: req.body.answer_text,
+    user_id: req.body.user_id,
+    question_id: req.body.question_id
+  })
+  .then(dbAnswerData => res.json(dbAnswerData))
+  .catch(err => {
+    console.log(err);
+    res.status(400).json(err);
+  })
+});
+
 // get single question
 router.get('/questions/:id', (req, res) => {
   console.log('========== dashboard single question route ==========')

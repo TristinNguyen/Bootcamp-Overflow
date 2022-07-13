@@ -47,7 +47,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
-// post a new comment to a post
+// post a new answer to a post
 router.post( '/', withAuth, (req, res) => {
   Answer.create({
     answer_text: req.body.answer_text,
