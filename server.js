@@ -16,7 +16,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 
-
+// session Middleware
 const sess = {
   secret: 'very secret code',
   cookie: {},
@@ -26,16 +26,21 @@ const sess = {
     db: sequelize
   })
 };
-
 app.use(session(sess));
+
+// handlebars
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
+
+// express
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({
-  secret: "super se", cookie : {}, resave:false, saveUninitialized: true, store: new SequelizeStore({db:sequelize})
-}))
+
+// this is duplicated from above?
+// app.use(session({
+//   secret: "super se", cookie : {}, resave:false, saveUninitialized: true, store: new SequelizeStore({db:sequelize})
+// }))
 
 // turn on routes
 app.use(routes); 

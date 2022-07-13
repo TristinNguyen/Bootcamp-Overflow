@@ -113,12 +113,14 @@ router.post('/', withAuth, (req, res) => {
 });
 
 // upvote (votes technically alter the question's data)
-router.put('/vote', withAuth, (req, res) => {
+router.put('/vote', (req, res) => {
+    console.log('============ Route /questions/vote ============');
     // make sure the session exists first
     // upvotes should only work if someone is logged in
-    if (req.session) {
+    console.log(req.body);
+    if (req.session.user_id) {
       // pass session id along with all destructured properties on req.body
-        Question.vote({ ...req.body, user_id: req.session.user_id }, { Vote, answer, User })
+        Question.vote({ question_id: req.body.question_id, user_id: req.session.user_id }, { Vote, Answer, User })
         .then(updatedVoteData => res.json(updatedVoteData))
         .catch(err => {
             console.log(err);

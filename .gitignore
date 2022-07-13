@@ -1,6 +1,6 @@
 .DS_Store
 node_modules
 .env
-.whiteboard.js
+.whiteboard.*
 Insomnia_GroupProjRequests.json
 eratta/
