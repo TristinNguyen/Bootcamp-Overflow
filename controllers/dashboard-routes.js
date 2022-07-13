@@ -34,14 +34,14 @@ router.get('/', withAuth, (req, res) => {
     ]
   })
   .then(dbQuestionData => {
-  // serialize data before passing to template
-  const questions = dbQuestionData.map(question => question.get({ plain: true }));
-  console.log(questions)
-  res.render('dashboard', { questions, loggedIn: true });
+    // serialize data before passing to template
+    const questions = dbQuestionData.map(question => question.get({ plain: true }));
+    console.log(questions)
+    res.render('dashboard', { questions, loggedIn: true });
   })
   .catch(err => {
-  console.log(err);
-  res.status(500).json(err);
+    console.log(err);
+    res.status(500).json(err);
   });
 });
 
