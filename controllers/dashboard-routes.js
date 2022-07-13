@@ -45,7 +45,9 @@ router.get('/', withAuth, (req, res) => {
   });
 });
 
-
+// router.get('/add', (req, res) => {
+//   res.render('newquestion', { loggedIn: true });
+// });
 // post a new answer to a post
 router.post( '/answers/', (req, res) => {
   console.log('============ POST ANSWERS ROUTE /dashboard/answers/ ============')
@@ -58,13 +60,13 @@ router.post( '/answers/', (req, res) => {
   .catch(err => {
     console.log(err);
     res.status(400).json(err);
-  })
+  });
+});
 
 router.get('/add', (req, res) => {
   res.render('newquestion', { loggedIn: true });
-
 });
-})
+
 // get single question
 router.get('/questions/:id', (req, res) => {
   console.log('========== dashboard single question route ==========')
