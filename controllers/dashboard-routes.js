@@ -152,11 +152,14 @@ router.put('/questions/:id/vote', withAuth, (req, res) => {
     Question.vote({ question_id: req.body.question_id, user_id: req.session.user_id }, { Vote, Answer, User })
     .then(updatedVoteData => {
         console.log(updatedVoteData)
+
         res.json(updatedVoteData)
       })
       .catch(err => {
-          console.log(err);
-          res.status(400).json(err);
+        console.log('============ VOTING ERROR ============')
+        console.log(err);
+        res.status(400).json({message: 'Duplicate votes not allowed'});
+        // res.status(400).json({message: "Only one vote per person!"});
       });
   }
 });
