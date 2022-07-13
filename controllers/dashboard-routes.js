@@ -45,6 +45,10 @@ router.get('/', withAuth, (req, res) => {
   });
 });
 
+router.get('/add', (req, res) => {
+  res.render('newquestion', { loggedIn: true });
+});
+
 // get single question
 router.get('/questions/:id', (req, res) => {
   console.log('========== dashboard single question route ==========')
