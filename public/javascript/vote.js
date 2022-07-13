@@ -1,3 +1,5 @@
+
+console.log('vote module')
 async function upVoteHandler(event) {
     // console.log('upVote button clicked');
     event.preventDefault();

@@ -60,11 +60,11 @@ router.post( '/answers/', (req, res) => {
   .catch(err => {
     console.log(err);
     res.status(400).json(err);
-  });
+  })
 });
 
 router.get('/add', (req, res) => {
-  res.render('newquestion', { loggedIn: true });
+  res.render('newquestion', { loggedIn: true })
 });
 
 // get single question

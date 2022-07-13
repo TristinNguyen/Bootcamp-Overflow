@@ -1,4 +1,8 @@
-const session = require("express-session");
+
+// const session = require("express-session");
+    import session from "express-session"
+
+console.log('answer module')
 
 async function answerFormHandler(event) {
     console.log('fetch: POST to the dashboard/answer route')
@@ -31,7 +35,8 @@ async function answerFormHandler(event) {
     }
 }
 
-document.querySelector('.add-answer').addEventListener('submit', answerFormHandler);
 
-// document.querySelector('.add-answer').addEventListener('submit', answerFormHandler);
-// document.querySelector('.answer-form').addEventListener('submit', answerFormHandler);
+
+document.querySelector('.add-answer').addEventListener('click', answerFormHandler);
+document.querySelectorAll('#try-again').addEventListener('click, answerFormHandler');
+
