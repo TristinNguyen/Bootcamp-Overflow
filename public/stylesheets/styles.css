@@ -75,14 +75,6 @@ form label {
   color: black;
 }
 
-.question-title {
-  margin-left: 10px;
-}
-
-.question-body {
-  margin: 30px;
-}
-
 .username {
   color: black;
   font-family: 'Times New Roman', Times, serif;
@@ -90,10 +82,35 @@ form label {
   font-weight: bold;
 }
 
-/* #questions-container {
+.questions-container {
   display: block;
-  margin: auto;
-} */
+  margin-left: 5%;
+  margin-right: 5%;
+  font-weight: bold;
+}
+
+.question-article {
+  /* margin-right: 3%; */
+  padding-left: 1em;
+  padding-right: 2em;
+}
+
+
+.question-body {
+  font-weight: normal;
+  font-size: large;
+}
+
+.question-form {
+  position: relative;
+  align-items: center;
+  align-self: center;
+}
+
+.question-title {
+  color:blue;
+}
+
 
 .search {
   border-radius: 8px;
@@ -125,12 +142,6 @@ form label {
 
 #button1 {
   margin-right: 10px;
-}
-
-.question-form {
-  position: relative;
-  align-items: center;
-  align-self: center;
 }
 
 .navbar-image {
